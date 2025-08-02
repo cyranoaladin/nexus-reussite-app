@@ -84,6 +84,19 @@ export async function POST(request: NextRequest) {
     // TODO: Envoyer email de bienvenue
     // TODO: Créer une tâche pour l'assistante (nouveau bilan à traiter)
     
+    // Envoyer email de bienvenue
+    try {
+      const { sendWelcomeParentEmail } = await import('@/lib/email')
+      await sendWelcomeParentEmail(
+        result.parentUser.email,
+        `${result.parentUser.firstName} ${result.parentUser.lastName}`,
+        `${result.studentUser.firstName} ${result.studentUser.lastName}`
+      )
+    } catch (emailError) {
+      console.error('Erreur envoi email de bienvenue:', emailError)
+      // Ne pas faire échouer l'inscription si l'email ne part pas
+    }
+    
     return NextResponse.json({
       success: true,
       message: 'Inscription réussie ! Vous recevrez un email de confirmation sous 24h.',

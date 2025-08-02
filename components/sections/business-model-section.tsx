@@ -26,12 +26,12 @@ export function BusinessModelSection() {
             Modèle Transparent & Flexible
           </Badge>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Abonnement + Crédits : Comment ça marche ?
+            Notre Modèle Unique : Abonnement + Crédits
           </h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-xl text-gray-600 mb-8">
-              Notre modèle unique combine la sécurité d'un abonnement mensuel avec 
-              la flexibilité d'un système de crédits pour les prestations humaines.
+              Nous avons conçu un modèle révolutionnaire qui allie la transparence d'un abonnement 
+              à la flexibilité totale d'un système de crédits pour vos prestations humaines.
             </p>
             
             {/* Infographie explicative */}

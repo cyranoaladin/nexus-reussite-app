@@ -45,9 +45,9 @@ export function HeroSection() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
             >
-              L'Excellence Éducative
+              La Pédagogie Augmentée
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
-                Réinventée
+                de Référence
               </span>
             </motion.h1>
 

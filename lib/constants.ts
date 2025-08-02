@@ -59,17 +59,38 @@ export const SPECIAL_PACKS = {
   GRAND_ORAL: {
     name: "Pack Grand Oral",
     price: 750,
-    description: "Préparation complète au Grand Oral"
+    description: "Préparation complète au Grand Oral",
+    features: [
+      "4 séances de coaching individuel",
+      "Préparation des supports visuels",
+      "Entraînement à l'oral avec feedback vidéo",
+      "Simulation d'épreuve en conditions réelles",
+      "Gestion du stress et techniques de présentation"
+    ]
   },
   BAC_FRANCAIS: {
     name: "Pack Bac de Français",
     price: 1200,
-    description: "Accompagnement intensif pour le Bac de Français"
+    description: "Accompagnement intensif pour le Bac de Français",
+    features: [
+      "6 séances de méthodologie (dissertation, commentaire)",
+      "Révision complète des œuvres au programme",
+      "Entraînement à l'oral avec textes",
+      "Correction personnalisée de 3 devoirs blancs",
+      "Fiches de révision personnalisées"
+    ]
   },
   ORIENTATION: {
     name: "Pack Orientation & Parcoursup",
     price: 900,
-    description: "Stratégie complète pour Parcoursup"
+    description: "Stratégie complète pour Parcoursup",
+    features: [
+      "Bilan d'orientation personnalisé",
+      "Stratégie de vœux optimisée",
+      "Rédaction des projets de formation motivés",
+      "Préparation aux entretiens d'écoles",
+      "Suivi jusqu'aux résultats d'admission"
+    ]
   }
 } as const
 
