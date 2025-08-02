@@ -7,7 +7,7 @@
 FROM node:18-alpine AS base
 
 # Installation d'OpenSSL pour Prisma
-RUN apk add --no-cache openssl libc6-compat
+RUN apk add --no-cache openssl libc6-compat gcompat libstdc++
 
 
 # === ÉTAPE 2: Installation des Dépendances ===
