@@ -63,8 +63,6 @@ RUN npm ci --omit=dev
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-# On copie aussi le client Prisma généré, qui est nécessaire au runtime.
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
 # On expose le port sur lequel le serveur Next.js écoute à l'intérieur du conteneur.
 EXPOSE 3000
