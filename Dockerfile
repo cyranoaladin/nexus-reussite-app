@@ -6,6 +6,9 @@
 # On la nomme "base\" pour pouvoir s'y référer plus tard.
 FROM node:18-alpine AS base
 
+# Installation d'OpenSSL pour Prisma
+RUN apk add --no-cache openssl
+
 
 # === ÉTAPE 2: Installation des Dépendances ===
 # On utilise l'image "base" pour cette étape et on la nomme "deps".

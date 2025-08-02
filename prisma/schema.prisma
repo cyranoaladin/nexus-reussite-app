@@ -86,6 +86,7 @@ model User {
   // Relations spécifiques selon le rôle
   parentProfile ParentProfile?
   studentProfile StudentProfile?
+  student Student?
   coachProfile CoachProfile?
 
   // Relations communes
