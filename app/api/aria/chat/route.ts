@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { AriaMessage } from '@prisma/client'
 import { z } from 'zod'
 import { Subject } from '@/types/enums'
 import { generateAriaResponse, saveAriaConversation } from '@/lib/aria'
@@ -66,7 +67,7 @@ export async function POST(request: NextRequest) {
         take: 10 // Limiter l'historique
       })
       
-      conversationHistory = messages.map(msg => ({
+      conversationHistory = messages.map((msg: AriaMessage) => ({
         role: msg.role,
         content: msg.content
       }))
