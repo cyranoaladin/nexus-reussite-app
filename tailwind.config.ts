@@ -9,32 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#4F46E5',
-          50: '#EFEEFF',
-          100: '#E0DEFF',
-          200: '#C7C2FF',
-          300: '#A5A0FF',
-          400: '#8B82FF',
-          500: '#4F46E5',
-          600: '#4338CA',
-          700: '#3730A3',
-          800: '#312E81',
-          900: '#1E1B4B',
-        },
-        secondary: {
-          DEFAULT: '#F97316',
-          50: '#FFF7ED',
-          100: '#FFEDD5',
-          200: '#FED7AA',
-          300: '#FDBA74',
-          400: '#FB923C',
-          500: '#F97316',
-          600: '#EA580C',
-          700: '#C2410C',
-          800: '#9A3412',
-          900: '#7C2D12',
-        },
+        // Nouvelle palette Bleu-Blanc-Rouge
+        'bleu-nuit': '#0F172A',
+        'bleu-primaire': '#2563EB', 
+        'bleu-secondaire': '#EFF6FF',
+        'blanc-pur': '#FFFFFF',
+        'rouge-corail': '#EF4444',
+        'ligne-bordure': '#E2E8F0',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

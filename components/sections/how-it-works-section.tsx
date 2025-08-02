@@ -55,7 +55,7 @@ const STEPS = [
 
 export function HowItWorksSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
         <motion.div
@@ -65,14 +65,14 @@ export function HowItWorksSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge variant="outline" className="mb-4">
+          <Badge variant="default" className="mb-4">
             <ArrowRight className="w-4 h-4 mr-2" />
             Comment ça marche ?
           </Badge>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Votre Parcours vers <span className="text-primary-600">l'Excellence</span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            Votre Parcours vers <span className="text-blue-600">l'Excellence</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-900 max-w-3xl mx-auto">
             Un processus simple et transparent, conçu pour vous accompagner 
             de la découverte jusqu'à la réussite de vos objectifs.
           </p>
@@ -90,31 +90,31 @@ export function HowItWorksSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg bg-white">
+                <Card className="h-full bg-white">
                   <CardContent className="p-6">
                     {/* Numéro et icône */}
                     <div className="flex items-center mb-4">
                       <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mr-4 ${
                         step.color === 'primary' 
-                          ? 'bg-primary-100 text-primary-600' 
-                          : 'bg-secondary-100 text-secondary-600'
+                          ? 'bg-blue-100 text-blue-600' 
+                          : 'bg-red-100 text-red-600'
                       }`}>
                         <Icon className="w-6 h-6" />
                       </div>
                       <span className={`text-2xl font-bold ${
-                        step.color === 'primary' ? 'text-primary-500' : 'text-secondary-500'
+                        step.color === 'primary' ? 'text-blue-600' : 'text-red-500'
                       }`}>
                         {step.number}
                       </span>
                     </div>
 
                     {/* Titre */}
-                    <h3 className="font-heading text-lg font-semibold text-gray-900 mb-3">
+                    <h3 className="font-heading text-lg font-semibold text-slate-900 mb-3">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-slate-900 text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </CardContent>
@@ -132,11 +132,11 @@ export function HowItWorksSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-8">
-            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-white rounded-xl p-8 shadow-md border border-slate-200">
+            <h3 className="font-heading text-2xl font-bold text-slate-900 mb-4">
               Prêt à Commencer Votre Transformation ?
             </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            <p className="text-slate-900 mb-6 max-w-2xl mx-auto">
               Rejoignez les centaines de familles qui nous font déjà confiance. 
               Votre bilan stratégique gratuit vous attend.
             </p>

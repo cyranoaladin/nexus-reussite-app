@@ -19,17 +19,17 @@ export function Footer() {
               />
               <span className="font-bold text-xl">Nexus Réussite</span>
             </Link>
-            <p className="text-gray-300 mb-6 max-w-md">
+            <p className="text-blue-300 mb-6 max-w-md">
               La plateforme de pédagogie augmentée de référence pour les lycéens du système français en Tunisie.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-blue-300 hover:text-white transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-blue-300 hover:text-white transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-blue-300 hover:text-white transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -39,11 +39,11 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Navigation</h3>
             <ul className="space-y-2">
-              <li><Link href="/equipe" className="text-gray-300 hover:text-white transition-colors">Notre Équipe</Link></li>
-              <li><Link href="/offres" className="text-gray-300 hover:text-white transition-colors">Offres & Tarifs</Link></li>
-              <li><Link href="/notre-centre" className="text-gray-300 hover:text-white transition-colors">Notre Centre</Link></li>
-              <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/equipe" className="text-blue-300 hover:text-white transition-colors">Notre Équipe</Link></li>
+              <li><Link href="/offres" className="text-blue-300 hover:text-white transition-colors">Offres & Tarifs</Link></li>
+              <li><Link href="/notre-centre" className="text-blue-300 hover:text-white transition-colors">Notre Centre</Link></li>
+              <li><Link href="/contact" className="text-blue-300 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/blog" className="text-blue-300 hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -52,23 +52,23 @@ export function Footer() {
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-[#F97316]" />
-                <span className="text-gray-300">+216 XX XXX XXX</span>
+                <Phone className="h-4 w-4 text-red-500" />
+                <span className="text-blue-300">+216 XX XXX XXX</span>
               </li>
               <li className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-[#F97316]" />
-                <span className="text-gray-300">contact@nexus-reussite.tn</span>
+                <Mail className="h-4 w-4 text-red-500" />
+                <span className="text-blue-300">contact@nexus-reussite.tn</span>
               </li>
               <li className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-[#F97316] mt-1" />
-                <span className="text-gray-300">Centre de Tunis<br />Tunisie</span>
+                <MapPin className="h-4 w-4 text-red-500 mt-1" />
+                <span className="text-blue-300">Centre de Tunis<br />Tunisie</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-slate-400">
+        <div className="border-t border-slate-700 mt-8 pt-8 text-center">
+          <p className="text-blue-300">
             © 2025 Nexus Réussite. Tous droits réservés.
           </p>
         </div>

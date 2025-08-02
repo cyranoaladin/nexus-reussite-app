@@ -39,7 +39,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 hover:text-[#4F46E5] transition-colors"
+                className="text-sm font-medium text-slate-900 hover:text-blue-600 transition-colors"
               >
                 {item.name}
               </Link>
@@ -66,9 +66,9 @@ export function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
+              <X className="h-6 w-6 text-slate-900" />
             ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
+              <Menu className="h-6 w-6 text-slate-900" />
             )}
           </button>
         </div>

@@ -31,7 +31,7 @@ const pillars = [
 
 export function PillarsSection() {
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-20 bg-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête de section */}
         <motion.div
@@ -41,14 +41,14 @@ export function PillarsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge variant="outline" className="mb-4">
+          <Badge variant="default" className="mb-4">
             <Zap className="w-4 h-4 mr-2" />
             Les 3 Piliers de Notre Révolution
           </Badge>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Une <span className="text-primary-600">Approche Unique</span> en Son Genre
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            Une <span className="text-blue-600">Approche Unique</span> en Son Genre
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-900 max-w-3xl mx-auto">
             Nous combinons le meilleur de l'humain et de la technologie pour créer 
             une expérience d'apprentissage sans précédent.
           </p>
@@ -66,24 +66,24 @@ export function PillarsSection() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg bg-white">
+                <Card className="h-full bg-white">
                   <CardContent className="p-8 text-center">
                     {/* Icône */}
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
                       pillar.color === 'primary' 
-                        ? 'bg-primary-100 text-primary-600' 
-                        : 'bg-secondary-100 text-secondary-600'
+                        ? 'bg-blue-100 text-blue-600' 
+                        : 'bg-red-100 text-red-600'
                     }`}>
                       <Icon className="w-8 h-8" />
                     </div>
 
                     {/* Titre */}
-                    <h3 className="font-heading text-xl font-semibold text-gray-900 mb-4">
+                    <h3 className="font-heading text-xl font-semibold text-slate-900 mb-4">
                       {pillar.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <p className="text-slate-900 mb-6 leading-relaxed">
                       {pillar.description}
                     </p>
 
@@ -92,10 +92,10 @@ export function PillarsSection() {
                       {pillar.features.map((feature, featureIndex) => (
                         <div
                           key={featureIndex}
-                          className="flex items-center justify-center space-x-2 text-sm text-gray-700"
+                          className="flex items-center justify-center space-x-2 text-sm text-slate-900"
                         >
                           <div className={`w-2 h-2 rounded-full ${
-                            pillar.color === 'primary' ? 'bg-primary-500' : 'bg-secondary-500'
+                            pillar.color === 'primary' ? 'bg-blue-600' : 'bg-red-500'
                           }`} />
                           <span>{feature}</span>
                         </div>

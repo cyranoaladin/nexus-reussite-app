@@ -22,7 +22,7 @@ export function CTASection() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-blue-600 to-red-500 relative overflow-hidden">
       {/* Formes décoratives */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
@@ -76,14 +76,14 @@ export function CTASection() {
             <Button 
               asChild 
               size="lg" 
-              className="bg-white text-primary-600 hover:bg-gray-100 shadow-lg group"
+              className="bg-white text-blue-600 hover:bg-gray-100 shadow-lg group font-semibold"
             >
               <Link href="/bilan-gratuit">
                 Commencer mon Bilan Stratégique Gratuit
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
+            <Button asChild variant="secondary" size="lg" className="border-white text-white hover:bg-white hover:text-blue-600 font-semibold">
               <Link href="/contact">
                 Poser une Question
               </Link>

@@ -9,11 +9,11 @@ import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-purple-50/30 to-orange-50/30 pt-20 pb-16">
+    <section className="relative overflow-hidden bg-white pt-20 pb-16">
       {/* Formes décoratives en arrière-plan */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-32 w-80 h-80 bg-gradient-to-br from-primary-200/20 to-secondary-200/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-gradient-to-tr from-secondary-200/20 to-primary-200/20 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-32 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-red-200/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-gradient-to-tr from-red-200/20 to-blue-200/20 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -32,7 +32,7 @@ export function HeroSection() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="inline-flex items-center mb-6"
             >
-              <Badge variant="outline" className="text-sm px-4 py-2 border-primary-200 text-primary-700 bg-primary-50">
+              <Badge variant="default">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Pédagogie Augmentée par l'IA
               </Badge>
@@ -43,12 +43,12 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
-                La Pédagogie Augmentée
+              <span className="text-slate-900">
+                La <span className="text-blue-600">Pédagogie Augmentée</span>
               </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
+              <span className="block text-slate-900">
                 de Référence
               </span>
             </motion.h1>
@@ -74,10 +74,10 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0"
+              className="text-xl text-slate-900 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              La première plateforme qui fusionne un <span className="text-primary-600 font-semibold">accompagnement humain d'élite</span>, 
-              une <span className="text-primary-600 font-semibold">plateforme intelligente</span> et l'assistance <span className="text-primary-600 font-semibold">IA révolutionnaire ARIA</span> 
+              La première plateforme qui fusionne un <span className="text-blue-600 font-semibold">accompagnement humain d'élite</span>, 
+              une <span className="text-blue-600 font-semibold">plateforme intelligente</span> et l'assistance <span className="text-blue-600 font-semibold">IA révolutionnaire ARIA</span> 
               pour garantir la réussite de votre enfant.
             </motion.p>
 
@@ -88,16 +88,16 @@ export function HeroSection() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8"
             >
-              <div className="flex items-center space-x-2 text-gray-700">
-                <Users className="w-5 h-5 text-primary-500" />
+              <div className="flex items-center space-x-2 text-slate-900">
+                <Users className="w-5 h-5 text-blue-600" />
                 <span className="font-medium">Coachs d'Élite</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-700">
-                <Brain className="w-5 h-5 text-secondary-500" />
+              <div className="flex items-center space-x-2 text-slate-900">
+                <Brain className="w-5 h-5 text-red-500" />
                 <span className="font-medium">IA ARIA</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-700">
-                <Sparkles className="w-5 h-5 text-primary-500" />
+              <div className="flex items-center space-x-2 text-slate-900">
+                <Sparkles className="w-5 h-5 text-blue-600" />
                 <span className="font-medium">Résultats Garantis</span>
               </div>
             </motion.div>

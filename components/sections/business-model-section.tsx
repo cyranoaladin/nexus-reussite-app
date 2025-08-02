@@ -103,7 +103,7 @@ const SPECIAL_PACKS = {
 
 export function BusinessModelSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête explicative */}
         <motion.div
@@ -113,15 +113,15 @@ export function BusinessModelSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge variant="outline" className="mb-4">
+          <Badge variant="default" className="mb-4">
             <CreditCard className="w-4 h-4 mr-2" />
             Modèle Transparent & Flexible
           </Badge>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             Notre Modèle Unique : Abonnement + Crédits
           </h2>
           <div className="max-w-4xl mx-auto">
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-slate-900 mb-8">
               Nous avons conçu un modèle révolutionnaire qui allie la transparence d'un abonnement 
               à la flexibilité totale d'un système de crédits pour vos prestations humaines.
             </p>
@@ -133,13 +133,13 @@ export function BusinessModelSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl p-6 shadow-soft border border-primary-100"
+                className="bg-white rounded-xl p-6 shadow-md border border-slate-200"
               >
                 <div className="flex items-center mb-4">
-                  <Calendar className="w-6 h-6 text-primary-500 mr-3" />
+                  <Calendar className="w-6 h-6 text-blue-600 mr-3" />
                   <h3 className="font-heading font-semibold text-lg">L'Abonnement (Le Socle)</h3>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-slate-900">
                   Accès complet à la plateforme, ARIA, suivi personnalisé + 
                   un budget mensuel de crédits inclus selon votre formule.
                 </p>
@@ -150,13 +150,13 @@ export function BusinessModelSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl p-6 shadow-soft border border-secondary-100"
+                className="bg-white rounded-xl p-6 shadow-md border border-slate-200"
               >
                 <div className="flex items-center mb-4">
-                  <Zap className="w-6 h-6 text-secondary-500 mr-3" />
+                  <Zap className="w-6 h-6 text-red-500 mr-3" />
                   <h3 className="font-heading font-semibold text-lg">Les Crédits (La Flexibilité)</h3>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-slate-900">
                   1 crédit = 1h de cours particulier en ligne. Utilisez vos crédits 
                   quand vous en avez besoin, pour les prestations humaines.
                 </p>
@@ -165,6 +165,32 @@ export function BusinessModelSection() {
           </div>
         </motion.div>
 
+        {/* Règles du Système de Crédits - Remontée */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-blue-50 rounded-xl p-6 text-center mb-16"
+        >
+          <h3 className="font-heading font-semibold text-lg text-slate-900 mb-2">
+            💡 Règles du Système de Crédits
+          </h3>
+          <div className="text-slate-900 text-sm space-y-2">
+            <p>
+              <strong>Coûts des Prestations :</strong> Cours en ligne (1 crédit) • 
+              Cours en présentiel (1,25 crédit) • Atelier de groupe (1,5 crédit)
+            </p>
+            <p>
+              <strong>Report :</strong> Les crédits non utilisés sont reportés 1 mois. 
+              Notification 7 jours avant expiration.
+            </p>
+            <p>
+              <strong>Packs supplémentaires :</strong> Validité 12 mois. 
+              Annulation gratuite > 24h (cours) ou 48h (ateliers).
+            </p>
+          </div>
+        </motion.div>
         {/* Grille des formules d'abonnement */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -173,7 +199,7 @@ export function BusinessModelSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="font-heading text-2xl font-bold text-gray-900 mb-8 text-center">
+          <h3 className="font-heading text-2xl font-bold text-slate-900 mb-8 text-center">
             Nos Formules d'Abonnement Mensuel
           </h3>
           
@@ -189,32 +215,32 @@ export function BusinessModelSection() {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge variant="secondary" className="px-4 py-1">
+                    <Badge variant="popular" className="px-4 py-1">
                       <Star className="w-3 h-3 mr-1" />
                       Populaire
                     </Badge>
                   </div>
                 )}
                 
-                <Card className={`h-full transition-all duration-300 hover:shadow-medium ${
+                <Card className={`h-full transition-all duration-300 ${
                   plan.popular 
-                    ? 'border-secondary-200 shadow-medium scale-105' 
-                    : 'border-gray-200 shadow-soft hover:scale-105'
+                    ? 'border-t-4 border-t-red-500 border-slate-200' 
+                    : 'border-slate-200'
                 }`}>
                   <CardHeader className="text-center pb-4">
-                    <CardTitle className="font-heading text-xl font-bold text-gray-900">
+                    <CardTitle className="font-heading text-xl font-bold text-slate-900">
                       {plan.name}
                     </CardTitle>
-                    <p className="text-sm text-gray-600 mt-2">{plan.description}</p>
+                    <p className="text-sm text-slate-900 mt-2">{plan.description}</p>
                     <div className="mt-4">
-                      <span className="text-4xl font-bold text-gray-900">
+                      <span className="text-4xl font-bold text-slate-900">
                         {formatPrice(plan.price, "TND")}
                       </span>
-                      <span className="text-gray-600">/mois</span>
+                      <span className="text-slate-900">/mois</span>
                     </div>
                     {plan.credits > 0 && (
                       <div className="mt-2">
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="default" className="text-xs">
                           {plan.credits} crédits inclus
                         </Badge>
                       </div>
@@ -226,7 +252,7 @@ export function BusinessModelSection() {
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start space-x-3">
                           <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-600 text-sm">{feature}</span>
+                          <span className="text-slate-900 text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -234,7 +260,7 @@ export function BusinessModelSection() {
                     <Button 
                       asChild 
                       className="w-full" 
-                      variant={plan.popular ? "default" : "outline"}
+                      variant={plan.popular ? "accent" : "default"}
                     >
                       <Link href="/bilan-gratuit">
                         Commencer
@@ -247,32 +273,6 @@ export function BusinessModelSection() {
           </div>
         </motion.div>
 
-        {/* Règles du Système de Crédits - Remontée */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          viewport={{ once: true }}
-          className="bg-blue-50 rounded-xl p-6 text-center mb-16"
-        >
-          <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
-            💡 Règles du Système de Crédits
-          </h3>
-          <div className="text-gray-600 text-sm space-y-2">
-            <p>
-              <strong>Coûts des Prestations :</strong> Cours en ligne (1 crédit) • 
-              Cours en présentiel (1,25 crédit) • Atelier de groupe (1,5 crédit)
-            </p>
-            <p>
-              <strong>Report :</strong> Les crédits non utilisés sont reportés 1 mois. 
-              Notification 7 jours avant expiration.
-            </p>
-            <p>
-              <strong>Packs supplémentaires :</strong> Validité 12 mois. 
-              Annulation gratuite > 24h (cours) ou 48h (ateliers).
-            </p>
-          </div>
-        </motion.div>
 
         {/* Add-ons ARIA */}
         <motion.div
@@ -282,15 +282,15 @@ export function BusinessModelSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl p-8 shadow-soft">
+          <div className="bg-blue-50 rounded-xl p-8 shadow-md border border-slate-200">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full mb-4">
-                <Brain className="w-8 h-8 text-primary-600" />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-red-100 rounded-full mb-4">
+                <Brain className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="font-heading text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="font-heading text-2xl font-bold text-slate-900 mb-2">
                 L'Offre IA "ARIA"
               </h3>
-              <p className="text-gray-600">
+              <p className="text-slate-900">
                 ARIA Standard inclus dans tous les abonnements (1 matière). 
                 Ajoutez des matières selon vos besoins.
               </p>
@@ -298,21 +298,21 @@ export function BusinessModelSection() {
             
             <div className="grid md:grid-cols-2 gap-6">
               {Object.entries(ARIA_ADDONS).map(([key, addon]) => (
-                <Card key={key} className="border-gray-200">
+                <Card key={key} className="bg-white">
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <h4 className="font-semibold text-lg text-gray-900">{addon.name}</h4>
-                        <p className="text-gray-600 text-sm">{addon.description}</p>
+                        <h4 className="font-semibold text-lg text-slate-900">{addon.name}</h4>
+                        <p className="text-slate-900 text-sm">{addon.description}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-2xl font-bold text-primary-600">
+                        <span className="text-2xl font-bold text-blue-600">
                           +{formatPrice(addon.price, "TND")}
                         </span>
-                        <span className="text-gray-500 text-sm block">/mois</span>
+                        <span className="text-slate-900 text-sm block">/mois</span>
                       </div>
                     </div>
-                    <Button className="w-full" variant="outline" asChild>
+                    <Button className="w-full" variant="secondary" asChild>
                       <Link href="/bilan-gratuit">
                         Ajouter à mon Abonnement
                       </Link>
@@ -332,11 +332,11 @@ export function BusinessModelSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl p-8 shadow-soft">
-            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-white rounded-xl p-8 shadow-md border border-slate-200">
+            <h3 className="font-heading text-2xl font-bold text-slate-900 mb-6 text-center">
               Les Packs Spécifiques (Paiement Unique)
             </h3>
-            <p className="text-gray-600 text-center mb-8">
+            <p className="text-slate-900 text-center mb-8">
               Des accompagnements ciblés pour des objectifs précis
             </p>
             
@@ -347,9 +347,9 @@ export function BusinessModelSection() {
                     <div className="flex justify-between items-center w-full mr-4">
                       <div>
                         <h4 className="font-semibold text-lg">{pack.name}</h4>
-                        <p className="text-gray-600 text-sm">{pack.description}</p>
+                        <p className="text-slate-900 text-sm">{pack.description}</p>
                       </div>
-                      <span className="text-xl font-bold text-primary-600">
+                      <span className="text-xl font-bold text-blue-600">
                         {formatPrice(pack.price, "TND")}
                       </span>
                     </div>
@@ -360,7 +360,7 @@ export function BusinessModelSection() {
                         {pack.features.map((feature, index) => (
                           <li key={index} className="flex items-start space-x-3">
                             <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-600 text-sm">{feature}</span>
+                            <span className="text-slate-900 text-sm">{feature}</span>
                           </li>
                         ))}
                       </ul>
