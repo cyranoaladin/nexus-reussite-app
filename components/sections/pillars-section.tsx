@@ -53,7 +53,7 @@ function DIUTooltip() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="relative inline-block">
+    <span className="relative inline-block">
       <button
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
@@ -91,7 +91,7 @@ function DIUTooltip() {
           </div>
         </div>
       )}
-    </div>
+    </span>
   )
 }
 
