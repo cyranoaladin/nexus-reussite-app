@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { UserRole, Subject } from '@prisma/client'
+import { Subject } from '@/types/enums'
 
 // Validation pour l'inscription (Bilan Gratuit)
 export const bilanGratuitSchema = z.object({

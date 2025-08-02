@@ -16,7 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { bilanGratuitSchema, type BilanGratuitData } from "@/lib/validations"
-import { Subject } from "@prisma/client"
+import { Subject } from "@/types/enums"
 import { CheckCircle, User, GraduationCap, Target, Settings, Loader2 } from "lucide-react"
 
 const SUBJECTS_OPTIONS = [
