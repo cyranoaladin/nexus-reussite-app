@@ -6,6 +6,7 @@ x-environment: &environment
   DATABASE_URL: ${DATABASE_URL}
   NEXTAUTH_URL: ${NEXTAUTH_URL}
   NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+  # Ensure NEXTAUTH_SECRET is properly set for authentication
   OPENAI_API_KEY: ${OPENAI_API_KEY}
   # ... (ajoutez ici TOUTES les autres variables de votre .env que l'application Next.js doit connaître)
   # exemple :
