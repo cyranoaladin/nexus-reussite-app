@@ -86,7 +86,7 @@ export function AriaChat() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 3 }}
-          className="absolute bottom-20 right-0 bg-white rounded-lg shadow-lg p-3 max-w-xs border border-gray-200"
+          className="absolute bottom-20 right-0 bg-white rounded-lg shadow-lg p-3 w-48 border border-gray-200"
         >
           <div className="flex items-start space-x-2">
             <Image
@@ -98,8 +98,8 @@ export function AriaChat() {
             />
             <div>
               <p className="text-sm font-medium text-gray-900">ARIA</p>
-              <p className="text-xs text-gray-600">
-                Bonjour ! Essayez-moi gratuitement 👋
+              <p className="text-xs text-gray-600 whitespace-nowrap">
+                Essayez-moi gratuitement 👋
               </p>
             </div>
           </div>
