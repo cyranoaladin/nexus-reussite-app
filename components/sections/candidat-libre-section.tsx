@@ -35,7 +35,7 @@ export function CandidatLibreSection() {
           </h2>
           <p className="text-xl text-slate-900 max-w-3xl mx-auto">
             La solution annuelle tout-en-un pour préparer le <span className="text-blue-600 font-semibold">Baccalauréat</span> en candidat libre 
-            avec la structure, le soutien et l'expertise d'un établissement d'excellence.
+            avec la structure, le soutien et l'expertise d\'un établissement d'excellence.
           </p>
         </motion.div>
 
