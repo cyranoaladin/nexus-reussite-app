@@ -278,7 +278,9 @@ export default function DashboardAssistante() {
                   <div className="flex items-center space-x-3">
                     <CreditCard className="w-5 h-5 text-green-600" />
                     <div className="text-left">
-                      <p className="font-medium">Validation Paiements</p>
+                      <Link href="/dashboard/assistante/paiements" className="font-medium">
+                        Validation Paiements
+                      </Link>
                       <p className="text-sm text-gray-500">Virements Wise manuels</p>
                     </div>
                   </div>
