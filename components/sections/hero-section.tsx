@@ -3,10 +3,56 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Sparkles, Users, Brain } from "lucide-react"
+import { ArrowRight, Sparkles, ShieldCheck, BrainCircuit, Network, Code2, HelpCircle, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
+// Composant Tooltip pour DIU NSI
+function DIUTooltip() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className="relative inline-block">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+        className="inline-flex items-center justify-center w-4 h-4 ml-1 text-blue-600 hover:text-blue-700 transition-colors"
+      >
+        <HelpCircle size={16} />
+      </button>
+      
+      {isOpen && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-50">
+          <div className="bg-white border border-slate-200 rounded-lg shadow-xl p-4 w-80 text-left">
+            <div className="flex items-start justify-between mb-2">
+              <h4 className="font-semibold text-slate-900 text-sm">
+                Qu'est-ce que le DIU NSI ?
+              </h4>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-slate-400 hover:text-slate-600 ml-2"
+              >
+                <X size={14} />
+              </button>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed">
+              Le DIU "Enseigner l'informatique au lycée" est un diplôme national qui garantit 
+              que l'enseignant possède les connaissances et les compétences pédagogiques requises 
+              pour enseigner la spécialité Numérique et Sciences Informatiques (NSI) en 1ère et 
+              Terminale, conformément aux exigences de la réforme du lycée.
+            </p>
+            {/* Flèche du tooltip */}
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2">
+              <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+              <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-200 -mt-1"></div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-white pt-20 pb-16">
@@ -85,24 +131,44 @@ export function HeroSection() {
               pour garantir la <span className="text-blue-600 font-semibold">réussite au Baccalauréat</span> et l'<span className="text-blue-600 font-semibold">excellence à Parcoursup</span>.
             </motion.p>
 
-            {/* Piliers de confiance */}
+            {/* Feature Grid - Nouvelle grille 2x2 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              <div className="flex items-center space-x-2 text-slate-900">
-                <Users className="w-5 h-5 text-blue-600" />
-                <span className="font-medium">Professeurs <span className="text-blue-600">Agrégés</span></span>
+              {/* Rangée 1, Colonne 1 */}
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="text-blue-600" size={20} />
+                <p className="text-slate-900 font-medium">
+                  Coachs <span className="text-blue-600 font-semibold">Agrégés & Certifiés</span> du système français
+                </p>
               </div>
-              <div className="flex items-center space-x-2 text-slate-900">
-                <Brain className="w-5 h-5 text-red-500" />
-                <span className="font-medium">IA ARIA</span>
+              
+              {/* Rangée 1, Colonne 2 */}
+              <div className="flex items-center gap-3">
+                <BrainCircuit className="text-blue-600" size={20} />
+                <p className="text-slate-900 font-medium">
+                  <span className="text-blue-600 font-semibold">IA ARIA</span> : Votre assistant personnel 24/7
+                </p>
               </div>
-              <div className="flex items-center space-x-2 text-slate-900">
-                <Sparkles className="w-5 h-5 text-blue-600" />
-                <span className="font-medium"><span className="text-blue-600">Excellence</span> Garantie</span>
+              
+              {/* Rangée 2, Colonne 1 */}
+              <div className="flex items-center gap-3">
+                <Network className="text-blue-600" size={20} />
+                <p className="text-slate-900 font-medium">
+                  Expertise <span className="text-blue-600 font-semibold">Réseau AEFE</span> & Titulaires
+                </p>
+              </div>
+              
+              {/* Rangée 2, Colonne 2 - avec tooltip */}
+              <div className="flex items-center gap-3">
+                <Code2 className="text-blue-600" size={20} />
+                <p className="text-slate-900 font-medium">
+                  Spécialistes <span className="text-blue-600 font-semibold">DIU NSI</span> certifiés
+                  <DIUTooltip />
+                </p>
               </div>
             </motion.div>
 
