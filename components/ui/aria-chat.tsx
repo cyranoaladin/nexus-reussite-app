@@ -113,22 +113,22 @@ export function AriaChat() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-24 right-6 z-50 w-96 h-[500px]"
+            className="fixed bottom-24 right-6 z-50 w-[480px] h-[600px] max-w-[90vw] max-h-[80vh]"
           >
-            <Card className="h-full shadow-2xl border-0">
+            <Card className="h-full shadow-2xl border-0 overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-t-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <Image
                       src="/images/aria.png"
                       alt="ARIA"
-                      width={40}
-                      height={40}
+                      width={48}
+                      height={48}
                       className="rounded-full"
                     />
                     <div>
-                      <CardTitle className="text-lg">ARIA</CardTitle>
-                      <p className="text-sm text-white/90">Assistant IA Pédagogique</p>
+                      <CardTitle className="text-xl font-bold">ARIA</CardTitle>
+                      <p className="text-sm text-white/90">Assistant IA Pédagogique 24/7</p>
                     </div>
                   </div>
                   <Button
@@ -144,19 +144,22 @@ export function AriaChat() {
 
               <CardContent className="flex flex-col h-full p-0">
                 {/* Messages */}
-                <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                <div className="flex-1 overflow-y-auto p-6 space-y-4">
                   {messages.length === 0 && (
-                    <div className="text-center text-gray-500 py-8">
+                    <div className="text-center text-bleu-nuit py-12">
                       <Image
                         src="/images/aria.png"
                         alt="ARIA"
-                        width={64}
-                        height={64}
+                        width={80}
+                        height={80}
                         className="mx-auto mb-4 rounded-full"
                       />
-                      <p className="text-sm">
+                      <h3 className="font-heading font-semibold text-lg text-bleu-nuit mb-2">
+                        Bonjour ! Je suis ARIA 👋
+                      </h3>
+                      <p className="text-sm text-bleu-nuit/80 leading-relaxed">
                         Posez-moi une question pour commencer !<br />
-                        <span className="text-xs text-primary-600">
+                        <span className="text-xs text-blue-600 font-medium">
                           Démonstration gratuite (3 questions)
                         </span>
                       </p>
@@ -166,20 +169,20 @@ export function AriaChat() {
                   {messages.map((message) => (
                     <div
                       key={message.id}
-                      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}
                     >
                       <div
-                        className={`max-w-[80%] rounded-lg p-3 ${
+                        className={`max-w-[85%] rounded-xl p-4 shadow-sm ${
                           message.role === 'user'
-                            ? 'bg-primary-500 text-white'
-                            : 'bg-gray-100 text-gray-900'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-blue-50 text-bleu-nuit border border-slate-200'
                         }`}
                       >
                         <div className="flex items-start space-x-2">
                           {message.role === 'assistant' && (
-                            <Bot className="w-4 h-4 mt-0.5 text-primary-500" />
+                            <Bot className="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" />
                           )}
-                          <p className="text-sm">{message.content}</p>
+                          <p className="text-sm leading-relaxed">{message.content}</p>
                         </div>
                       </div>
                     </div>
@@ -187,13 +190,13 @@ export function AriaChat() {
 
                   {isLoading && (
                     <div className="flex justify-start">
-                      <div className="bg-gray-100 rounded-lg p-3">
+                      <div className="bg-blue-50 rounded-xl p-4 border border-slate-200">
                         <div className="flex items-center space-x-2">
-                          <Bot className="w-4 h-4 text-primary-500" />
+                          <Bot className="w-5 h-5 text-blue-600" />
                           <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" />
+                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                           </div>
                         </div>
                       </div>
@@ -201,11 +204,11 @@ export function AriaChat() {
                   )}
 
                   {demoQuestionsUsed >= 3 && (
-                    <div className="bg-primary-50 border border-primary-200 rounded-lg p-4 text-center">
-                      <p className="text-sm text-primary-800 mb-3">
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
+                      <p className="text-sm text-blue-800 mb-4 font-medium">
                         Démonstration terminée ! 🎉
                       </p>
-                      <Button asChild size="sm" className="w-full">
+                      <Button asChild size="default" className="w-full bg-blue-600 hover:bg-blue-700">
                         <a href="/bilan-gratuit">
                           Créer mon Compte Gratuit
                         </a>
@@ -216,25 +219,26 @@ export function AriaChat() {
 
                 {/* Input */}
                 {demoQuestionsUsed < 3 && (
-                  <div className="border-t p-4">
-                    <div className="flex space-x-2">
+                  <div className="border-t border-slate-200 p-6 bg-white">
+                    <div className="flex space-x-3">
                       <Input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyPress={handleKeyPress}
-                        placeholder="Posez votre question..."
+                        placeholder="Posez votre question sur le Bac, Parcoursup..."
                         disabled={isLoading}
-                        className="flex-1"
+                        className="flex-1 h-12 text-sm"
                       />
                       <Button
                         onClick={handleSendMessage}
                         disabled={!input.trim() || isLoading}
-                        size="sm"
+                        size="default"
+                        className="h-12 px-4 bg-blue-600 hover:bg-blue-700"
                       >
-                        <Send className="w-4 h-4" />
+                        <Send className="w-5 h-5" />
                       </Button>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2 text-center">
+                    <p className="text-xs text-bleu-nuit/60 mt-3 text-center font-medium">
                       Questions restantes : {3 - demoQuestionsUsed}
                     </p>
                   </div>
