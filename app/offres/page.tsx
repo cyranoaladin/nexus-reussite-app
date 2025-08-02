@@ -40,7 +40,7 @@ export default function OffresPage() {
               Un accompagnement régulier adapté à vos besoins
             </p>
             
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div className="grid lg:grid-cols-4 gap-8 mb-8">
               {Object.entries(SUBSCRIPTION_PLANS).map(([key, plan]) => (
                 <Card key={key} className={`relative ${plan.popular ? 'border-primary-500 shadow-lg' : 'border-gray-200'}`}>
                   {plan.popular && (
@@ -72,17 +72,19 @@ export default function OffresPage() {
                   </CardContent>
                 </Card>
               ))}
-              
-              {/* Pack Candidat Libre */}
+            </div>
+            
+            {/* Pack Candidat Libre - Séparé et mis en avant */}
+            <div className="max-w-md mx-auto">
               <Card className="relative border-2 border-slate-900 shadow-2xl">
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-red-500 text-white px-4 py-1">
                     <Trophy className="w-3 h-3 mr-1" />
-                    Pack Annuel
+                    🏆 Accompagnement Annuel Complet
                   </Badge>
                 </div>
-                <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-xl font-bold">Pack Candidat Libre</CardTitle>
+                <CardHeader className="text-center pb-4 pt-8">
+                  <CardTitle className="text-xl font-bold">Pack Réussite Candidat Libre</CardTitle>
                   <div className="mt-4">
                     <span className="text-3xl font-bold text-blue-600">
                       7200 TND

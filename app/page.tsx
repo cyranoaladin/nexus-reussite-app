@@ -9,6 +9,8 @@ import { BusinessModelSection } from "@/components/sections/business-model-secti
 import { HowItWorksSection } from "@/components/sections/how-it-works-section"
 import { StagesIntensifsSection } from "@/components/sections/stages-intensifs-section"
 import { CandidatLibreSection } from "@/components/sections/candidat-libre-section"
+import { StagesIntensifsSection } from "@/components/sections/stages-intensifs-section"
+import { CandidatLibreSection } from "@/components/sections/candidat-libre-section"
 import { CTASection } from "@/components/sections/cta-section"
 import { AriaChat } from "@/components/ui/aria-chat"
 
@@ -21,6 +23,8 @@ export default function HomePage() {
         <PillarsSection />
         <HowItWorksSection />
         <BusinessModelSection />
+        <StagesIntensifsSection />
+        <CandidatLibreSection />
         <StagesIntensifsSection />
         <CandidatLibreSection />
         <CTASection />

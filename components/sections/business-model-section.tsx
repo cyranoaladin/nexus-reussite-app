@@ -419,6 +419,52 @@ export function BusinessModelSection() {
                   </div>
                 </AccordionContent>
               </AccordionItem>
+              
+              {/* Pack Candidat Libre */}
+              <AccordionItem value="candidat-libre">
+                <AccordionTrigger className="text-left">
+                  <div className="flex justify-between items-center w-full mr-4">
+                    <div>
+                      <h4 className="font-semibold text-lg">Pack Spécial Candidat Libre</h4>
+                      <p className="text-slate-900 text-sm">Accompagnement sur-mesure pour candidats libres</p>
+                    </div>
+                    <span className="text-xl font-bold text-blue-600">
+                      Devis personnalisé
+                    </span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p className="text-slate-900 text-sm leading-relaxed">
+                      Un accompagnement sur-mesure pour les élèves en Terminale ou Première passant le <span className="text-blue-600 font-semibold">Baccalauréat</span> en candidat libre. 
+                      Inclut un plan de travail personnalisé, des sessions de suivi hebdomadaires, et un accès complet à la plateforme et à ARIA.
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-start space-x-3">
+                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-slate-900 text-sm">Plan de travail 100% personnalisé</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-slate-900 text-sm">Sessions de suivi hebdomadaires</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-slate-900 text-sm">Accès complet plateforme + ARIA toutes matières</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-slate-900 text-sm">Préparation spécifique aux épreuves</span>
+                      </li>
+                    </ul>
+                    <Button className="w-full" asChild>
+                      <Link href="/contact">
+                        Contactez-nous pour un bilan et un devis adapté
+                      </Link>
+                    </Button>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </div>
         </motion.div>
