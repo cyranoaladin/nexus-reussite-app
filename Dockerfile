@@ -3,7 +3,7 @@
 
 # === ÉTAPE 1: Image de Base ===
 # On part d'une image Node.js version 18, basée sur Alpine Linux (légère et sécurisée).
-# On la nomme "base" pour pouvoir s'y référer plus tard.
+# On la nomme "base\" pour pouvoir s'y référer plus tard.
 FROM node:18-alpine AS base
 
 
@@ -15,7 +15,7 @@ WORKDIR /app
 # On copie uniquement les fichiers nécessaires pour installer les dépendances.
 COPY package.json package-lock.json* ./
 
-# [MODIFIÉ] On utilise 'npm ci' qui est la commande standard et optimisée pour les déploiements.
+# [MODIFIÉ] On utilise 'npm ci\' qui est la commande standard et optimisée pour les déploiements.
 # Elle utilise le fichier package-lock.json pour garantir des installations fiables et rapides.
 RUN npm ci
 
