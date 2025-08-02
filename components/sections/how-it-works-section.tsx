@@ -89,7 +89,6 @@ export function HowItWorksSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-medium transition-all duration-300 border-0 shadow-soft">
                 <Card className="h-full hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg bg-white">
                   <CardContent className="p-6">
                     {/* Numéro et icône */}
