@@ -1,0 +1,17 @@
+# Fichier: docker-compose.override.yml
+# Ce fichier n'est utilisé qu'en local et ne doit pas être sur GitHub.
+
+services:
+  next-app:
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${DATABASE_PASSWORD}@postgres-db:5432/${POSTGRES_DB}?schema=public"
+
+  postgres-db:
+    env_file:
+      - .env.local
+    ports:
+      - "5433:5432"
