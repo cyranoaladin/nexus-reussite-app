@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/sections/hero-section"
 import { PillarsSection } from "@/components/sections/pillars-section"
 import { BusinessModelSection } from "@/components/sections/business-model-section"
+import { HowItWorksSection } from "@/components/sections/how-it-works-section"
 import { CTASection } from "@/components/sections/cta-section"
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <PillarsSection />
+        <HowItWorksSection />
         <BusinessModelSection />
         <CTASection />
       </main>

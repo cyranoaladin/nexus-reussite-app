@@ -51,6 +51,22 @@ export function HeroSection() {
               </span>
             </motion.h1>
 
+            {/* Logo avec slogan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+              className="flex justify-center lg:justify-start mb-6"
+            >
+              <Image
+                src="/images/logo_slogan.svg"
+                alt="Nexus Réussite - Pédagogie Augmentée"
+                width={300}
+                height={80}
+                className="h-16 w-auto"
+              />
+            </motion.div>
+
             {/* Sous-titre */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -113,14 +129,20 @@ export function HeroSection() {
             className="relative"
           >
             <div className="relative bg-white rounded-2xl shadow-strong p-8 border border-gray-100">
-              {/* Placeholder pour l'image principale ou ARIA */}
-              <div className="aspect-square bg-gradient-to-br from-primary-100 to-secondary-100 rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <Brain className="w-16 h-16 text-primary-500 mx-auto mb-4" />
-                  <h3 className="font-heading font-semibold text-lg text-gray-800 mb-2">
+              {/* ARIA Mascotte */}
+              <div className="aspect-square bg-gradient-to-br from-primary-100 to-secondary-100 rounded-xl flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/aria.png"
+                  alt="ARIA - Assistant IA Pédagogique"
+                  width={200}
+                  height={200}
+                  className="object-contain"
+                />
+                <div className="absolute bottom-4 left-4 right-4 text-center bg-white/90 rounded-lg p-2">
+                  <h3 className="font-heading font-semibold text-sm text-gray-800 mb-1">
                     ARIA, votre IA Pédagogique
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-xs">
                     Assistance intelligente 24/7
                   </p>
                 </div>

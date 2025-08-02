@@ -1,5 +1,11 @@
-import { ServiceType } from '@prisma/client'
-import { CREDIT_COSTS } from './constants'
+import { ServiceType } from '@/types/enums'
+
+// Coûts des prestations en crédits
+const CREDIT_COSTS = {
+  COURS_ONLINE: 1,
+  COURS_PRESENTIEL: 1.25,
+  ATELIER_GROUPE: 1.5
+} as const
 
 // Calcul du coût en crédits selon le type de prestation
 export function calculateCreditCost(serviceType: ServiceType): number {

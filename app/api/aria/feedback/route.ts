@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { ariaFeedbackSchema } from '@/lib/validations'
+import { z } from 'zod'
 import { recordAriaFeedback } from '@/lib/aria'
 import { checkAndAwardBadges } from '@/lib/badges'
+
+// Schema de validation pour le feedback ARIA
+const ariaFeedbackSchema = z.object({
+  messageId: z.string(),
+  feedback: z.boolean()
+})
 
 export async function POST(request: NextRequest) {
   try {

@@ -1,6 +1,6 @@
 import OpenAI from 'openai'
 import { prisma } from './prisma'
-import { Subject } from '@prisma/client'
+import { Subject } from '@/types/enums'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY

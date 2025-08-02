@@ -15,7 +15,6 @@ export function Header() {
     { name: "Offres & Tarifs", href: "/offres" },
     { name: "Notre Centre", href: "/notre-centre" },
     { name: "Contact", href: "/contact" },
-    { name: "Blog", href: "/blog" },
   ]
 
   return (

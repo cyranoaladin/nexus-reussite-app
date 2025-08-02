@@ -4,10 +4,99 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { SUBSCRIPTION_PLANS } from "@/lib/constants"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { formatPrice } from "@/lib/utils"
-import { Check, Star, CreditCard, Calendar, Zap } from "lucide-react"
+import { Check, Star, CreditCard, Calendar, Zap, Brain, Clock, Users } from "lucide-react"
 import Link from "next/link"
+
+// Formules d'abonnement selon les spécifications exactes
+const SUBSCRIPTION_PLANS = {
+  ACCES_PLATEFORME: {
+    name: "ACCÈS PLATEFORME",
+    price: 150,
+    credits: 0,
+    features: [
+      "Accès 24/7 à la plateforme",
+      "Suivi personnalisé",
+      "0 crédits/mois",
+      "ARIA (1 matière)"
+    ]
+  },
+  HYBRIDE: {
+    name: "HYBRIDE",
+    price: 450,
+    credits: 4,
+    popular: true,
+    features: [
+      "Tout de la Plateforme",
+      "4 crédits/mois",
+      "Coach référent",
+      "Support prioritaire"
+    ]
+  },
+  IMMERSION: {
+    name: "IMMERSION",
+    price: 750,
+    credits: 8,
+    features: [
+      "Tout de l'Hybride",
+      "8 crédits/mois",
+      "Support prioritaire",
+      "Bilan trimestriel"
+    ]
+  }
+}
+
+// Add-ons ARIA selon les spécifications
+const ARIA_ADDONS = {
+  MATIERE_SUPPLEMENTAIRE: {
+    name: "+1 matière supplémentaire",
+    price: 50,
+    description: "Ajoutez une matière à votre suivi ARIA"
+  },
+  PACK_TOUTES_MATIERES: {
+    name: "Pack Toutes Matières",
+    price: 120,
+    description: "ARIA disponible sur toutes les matières"
+  }
+}
+
+// Packs spécifiques selon les spécifications
+const SPECIAL_PACKS = {
+  GRAND_ORAL: {
+    name: "Pack Grand Oral",
+    price: 750,
+    description: "Préparation complète au Grand Oral",
+    features: [
+      "4 séances de coaching individuel",
+      "Préparation des supports visuels",
+      "Entraînement à l'oral avec feedback vidéo",
+      "Simulation d'épreuve en conditions réelles"
+    ]
+  },
+  BAC_FRANCAIS: {
+    name: "Pack Bac de Français",
+    price: 1200,
+    description: "Accompagnement intensif pour le Bac de Français",
+    features: [
+      "6 séances de méthodologie",
+      "Révision complète des œuvres",
+      "Entraînement à l'oral avec textes",
+      "Correction de 3 devoirs blancs"
+    ]
+  },
+  ORIENTATION: {
+    name: "Pack Orientation & Parcoursup",
+    price: 900,
+    description: "Stratégie complète pour Parcoursup",
+    features: [
+      "Bilan d'orientation personnalisé",
+      "Stratégie de vœux optimisée",
+      "Rédaction des projets motivés",
+      "Préparation aux entretiens"
+    ]
+  }
+}
 
 export function BusinessModelSection() {
   return (
@@ -73,92 +162,211 @@ export function BusinessModelSection() {
           </div>
         </motion.div>
 
-        {/* Grille des formules */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {Object.entries(SUBSCRIPTION_PLANS).map(([key, plan], index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge variant="secondary" className="px-4 py-1">
-                    <Star className="w-3 h-3 mr-1" />
-                    Populaire
-                  </Badge>
-                </div>
-              )}
-              
-              <Card className={`h-full transition-all duration-300 hover:shadow-medium ${
-                plan.popular 
-                  ? 'border-secondary-200 shadow-medium scale-105' 
-                  : 'border-gray-200 shadow-soft hover:scale-105'
-              }`}>
-                <CardHeader className="text-center pb-4">
-                  <CardTitle className="font-heading text-xl font-bold text-gray-900">
-                    {plan.name}
-                  </CardTitle>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-gray-900">
-                      {formatPrice(plan.price)}
-                    </span>
-                    <span className="text-gray-600">/mois</span>
-                  </div>
-                  {plan.credits > 0 && (
-                    <div className="mt-2">
-                      <Badge variant="outline" className="text-xs">
-                        {plan.credits} crédits inclus
-                      </Badge>
-                    </div>
-                  )}
-                </CardHeader>
-                
-                <CardContent className="pt-0">
-                  <ul className="space-y-3 mb-6">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start space-x-3">
-                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button 
-                    asChild 
-                    className="w-full" 
-                    variant={plan.popular ? "default" : "outline"}
-                  >
-                    <Link href="/bilan-gratuit">
-                      Commencer
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Note explicative sur les crédits */}
+        {/* Grille des formules d'abonnement */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h3 className="font-heading text-2xl font-bold text-gray-900 mb-8 text-center">
+            Nos Formules d'Abonnement Mensuel
+          </h3>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {Object.entries(SUBSCRIPTION_PLANS).map(([key, plan], index) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge variant="secondary" className="px-4 py-1">
+                      <Star className="w-3 h-3 mr-1" />
+                      Populaire
+                    </Badge>
+                  </div>
+                )}
+                
+                <Card className={`h-full transition-all duration-300 hover:shadow-medium ${
+                  plan.popular 
+                    ? 'border-secondary-200 shadow-medium scale-105' 
+                    : 'border-gray-200 shadow-soft hover:scale-105'
+                }`}>
+                  <CardHeader className="text-center pb-4">
+                    <CardTitle className="font-heading text-xl font-bold text-gray-900">
+                      {plan.name}
+                    </CardTitle>
+                    <div className="mt-4">
+                      <span className="text-4xl font-bold text-gray-900">
+                        {formatPrice(plan.price, "TND")}
+                      </span>
+                      <span className="text-gray-600">/mois</span>
+                    </div>
+                    {plan.credits > 0 && (
+                      <div className="mt-2">
+                        <Badge variant="outline" className="text-xs">
+                          {plan.credits} crédits inclus
+                        </Badge>
+                      </div>
+                    )}
+                  </CardHeader>
+                  
+                  <CardContent className="pt-0">
+                    <ul className="space-y-3 mb-6">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start space-x-3">
+                          <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-600 text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <Button 
+                      asChild 
+                      className="w-full" 
+                      variant={plan.popular ? "default" : "outline"}
+                    >
+                      <Link href="/bilan-gratuit">
+                        Commencer
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Add-ons ARIA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="bg-white rounded-xl p-8 shadow-soft">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full mb-4">
+                <Brain className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 mb-2">
+                L'Offre IA "ARIA"
+              </h3>
+              <p className="text-gray-600">
+                ARIA Standard inclus dans tous les abonnements (1 matière). 
+                Ajoutez des matières selon vos besoins.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {Object.entries(ARIA_ADDONS).map(([key, addon]) => (
+                <Card key={key} className="border-gray-200">
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h4 className="font-semibold text-lg text-gray-900">{addon.name}</h4>
+                        <p className="text-gray-600 text-sm">{addon.description}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-2xl font-bold text-primary-600">
+                          +{formatPrice(addon.price, "TND")}
+                        </span>
+                        <span className="text-gray-500 text-sm block">/mois</span>
+                      </div>
+                    </div>
+                    <Button className="w-full" variant="outline">
+                      Ajouter à mon Abonnement
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Packs Spécifiques */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="bg-white rounded-xl p-8 shadow-soft">
+            <h3 className="font-heading text-2xl font-bold text-gray-900 mb-6 text-center">
+              Les Packs Spécifiques (Paiement Unique)
+            </h3>
+            <p className="text-gray-600 text-center mb-8">
+              Des accompagnements ciblés pour des objectifs précis
+            </p>
+            
+            <Accordion type="single" collapsible className="w-full">
+              {Object.entries(SPECIAL_PACKS).map(([key, pack]) => (
+                <AccordionItem key={key} value={key}>
+                  <AccordionTrigger className="text-left">
+                    <div className="flex justify-between items-center w-full mr-4">
+                      <div>
+                        <h4 className="font-semibold text-lg">{pack.name}</h4>
+                        <p className="text-gray-600 text-sm">{pack.description}</p>
+                      </div>
+                      <span className="text-xl font-bold text-primary-600">
+                        {formatPrice(pack.price, "TND")}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-4">
+                      <ul className="space-y-2">
+                        {pack.features.map((feature, index) => (
+                          <li key={index} className="flex items-start space-x-3">
+                            <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-600 text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button className="w-full">
+                        Réserver ce Pack
+                      </Button>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </motion.div>
+
+        {/* Note explicative sur les crédits */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          viewport={{ once: true }}
           className="bg-blue-50 rounded-xl p-6 text-center"
         >
           <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
-            💡 Bon à savoir sur les crédits
+            💡 Règles du Système de Crédits
           </h3>
-          <p className="text-gray-600 text-sm">
-            <strong>Cours en ligne :</strong> 1 crédit • 
-            <strong> Cours en présentiel :</strong> 1,25 crédit • 
-            <strong> Atelier de groupe :</strong> 1,5 crédit<br/>
-            Les crédits non utilisés sont reportés 1 mois. Besoin de plus ? Achetez des packs supplémentaires !
-          </p>
+          <div className="text-gray-600 text-sm space-y-2">
+            <p>
+              <strong>Coûts des Prestations :</strong> Cours en ligne (1 crédit) • 
+              Cours en présentiel (1,25 crédit) • Atelier de groupe (1,5 crédit)
+            </p>
+            <p>
+              <strong>Report :</strong> Les crédits non utilisés sont reportés 1 mois. 
+              Notification 7 jours avant expiration.
+            </p>
+            <p>
+              <strong>Packs supplémentaires :</strong> Validité 12 mois. 
+              Annulation gratuite > 24h (cours) ou 48h (ateliers).
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
