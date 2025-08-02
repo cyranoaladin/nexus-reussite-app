@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, CreditCard, MessageCircle, BookOpen, User, LogOut, Loader2 } from "lucide-react"
 import { signOut } from "next-auth/react"
+import Link from "next/link"
 
 export default function DashboardEleve() {
   const { data: session, status } = useSession()
@@ -270,24 +271,6 @@ export default function DashboardEleve() {
       >
         {/* Le composant AriaChat sera rendu ici */}
       </div>
-    </div>
-  )
-}
-                <Calendar className="w-6 h-6 text-blue-600" />
-                <span>Réserver une Session</span>
-              </Button>
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
-                <MessageCircle className="w-6 h-6 text-purple-600" />
-                <span>Parler à ARIA</span>
-              </Button>
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
-                <BookOpen className="w-6 h-6 text-green-600" />
-                <span>Mes Ressources</span>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </main>
     </div>
   )
 }
