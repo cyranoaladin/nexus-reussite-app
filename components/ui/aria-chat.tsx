@@ -24,9 +24,9 @@ export function AriaChat() {
   const [isLoading, setIsLoading] = useState(false)
 
   const demoResponses = [
-    "Bonjour ! Je suis ARIA, votre assistant IA pédagogique. Je peux vous aider avec vos questions sur les mathématiques, la NSI, le français et bien d'autres matières. Que souhaitez-vous apprendre aujourd'hui ?",
-    "Excellente question ! Pour bien comprendre ce concept, commençons par les bases... Pour une explication complète et personnalisée, je vous invite à créer votre compte Nexus Réussite.",
-    "C'est un sujet passionnant ! J'aimerais vous donner une réponse détaillée, mais vous avez atteint la limite de la démonstration. Inscrivez-vous pour continuer notre conversation !"
+    "Bonjour ! Je suis ARIA, votre assistant IA pédagogique spécialisé dans la réussite au Baccalauréat et l'excellence à Parcoursup. Je peux vous aider avec les mathématiques, la NSI, le français, la philosophie et toutes les matières du programme. Posez-moi votre première question !",
+    "Excellente question ! Pour bien maîtriser ce concept essentiel au Bac, commençons par les fondamentaux... Pour une explication complète avec des exercices personnalisés et un suivi de vos progrès, créez votre compte Nexus Réussite.",
+    "Vous avez atteint la limite de cette démonstration gratuite ! Pour continuer à bénéficier de mon aide 24/7 et accéder à tous mes contenus pédagogiques exclusifs, inscrivez-vous maintenant et commencez votre parcours vers l'excellence."
   ]
 
   const handleSendMessage = async () => {

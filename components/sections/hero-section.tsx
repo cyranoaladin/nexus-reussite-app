@@ -43,54 +43,58 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+              className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight"
             >
-              <span className="text-slate-900">
-                La <span className="text-blue-600">Pédagogie Augmentée</span>
-              </span>
-              <span className="block text-slate-900">
-                de Référence
-              </span>
+              <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8">
+                <div className="flex-1">
+                  <span className="block text-slate-900">
+                    La <span className="text-blue-600">Pédagogie Augmentée</span>
+                  </span>
+                  <span className="block text-slate-900">
+                    de Référence
+                  </span>
+                </div>
+                
+                {/* Logo avec slogan intégré */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="flex-shrink-0 mt-4 lg:mt-0"
+                >
+                  <Image
+                    src="/images/logo_slogan_nexus.png"
+                    alt="Nexus Réussite - Pédagogie Augmentée"
+                    width={400}
+                    height={120}
+                    className="h-20 lg:h-24 w-auto"
+                  />
+                </motion.div>
+              </div>
             </motion.h1>
-
-            {/* Logo avec slogan */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.6 }}
-              className="flex justify-center lg:justify-start mb-6"
-            >
-              <Image
-                src="/images/logo_slogan_nexus.png"
-                alt="Nexus Réussite - Pédagogie Augmentée"
-                width={300}
-                height={80}
-                className="h-16 w-auto"
-              />
-            </motion.div>
 
             {/* Sous-titre */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
               className="text-xl text-slate-900 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
               La première plateforme qui fusionne un <span className="text-blue-600 font-semibold">accompagnement humain d'élite</span>, 
               une <span className="text-blue-600 font-semibold">plateforme intelligente</span> et l'assistance <span className="text-blue-600 font-semibold">IA révolutionnaire ARIA</span> 
-              pour garantir la réussite de votre enfant.
+              pour garantir la <span className="text-blue-600 font-semibold">réussite au Baccalauréat</span> et l'<span className="text-blue-600 font-semibold">excellence à Parcoursup</span>.
             </motion.p>
 
             {/* Piliers de confiance */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
               className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8"
             >
               <div className="flex items-center space-x-2 text-slate-900">
                 <Users className="w-5 h-5 text-blue-600" />
-                <span className="font-medium">Coachs d'Élite</span>
+                <span className="font-medium">Professeurs <span className="text-blue-600">Agrégés</span></span>
               </div>
               <div className="flex items-center space-x-2 text-slate-900">
                 <Brain className="w-5 h-5 text-red-500" />
@@ -98,7 +102,7 @@ export function HeroSection() {
               </div>
               <div className="flex items-center space-x-2 text-slate-900">
                 <Sparkles className="w-5 h-5 text-blue-600" />
-                <span className="font-medium">Résultats Garantis</span>
+                <span className="font-medium"><span className="text-blue-600">Excellence</span> Garantie</span>
               </div>
             </motion.div>
 
@@ -106,7 +110,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Button asChild size="lg" className="group">
@@ -127,24 +131,24 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
             className="relative"
           >
-            <div className="relative bg-white rounded-2xl shadow-strong p-8 border border-gray-100">
+            <div className="relative bg-white rounded-2xl shadow-xl p-12 border border-slate-200">
               {/* ARIA Mascotte */}
-              <div className="aspect-square bg-gradient-to-br from-primary-100 to-secondary-100 rounded-xl flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square bg-gradient-to-br from-blue-100 to-red-100 rounded-xl flex items-center justify-center relative overflow-hidden">
                 <Image
                   src="/images/aria.png"
                   alt="ARIA - Assistant IA Pédagogique"
-                  width={200}
-                  height={200}
+                  width={280}
+                  height={280}
                   className="object-contain"
                 />
                 <div className="absolute bottom-4 left-4 right-4 text-center bg-white/90 rounded-lg p-2">
                   <h3 className="font-heading font-semibold text-sm text-gray-800 mb-1">
                     ARIA, votre IA Pédagogique
                   </h3>
-                  <p className="text-gray-600 text-xs">
+                  <p className="text-slate-900 text-xs">
                     Assistance intelligente 24/7
                   </p>
                 </div>
@@ -154,7 +158,7 @@ export function HeroSection() {
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 bg-secondary-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg"
+                className="absolute -top-4 -right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg"
               >
                 IA Révolutionnaire
               </motion.div>
@@ -162,7 +166,7 @@ export function HeroSection() {
               <motion.div
                 animate={{ y: [10, -10, 10] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-4 -left-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg"
+                className="absolute -bottom-4 -left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg"
               >
                 Coachs Experts
               </motion.div>

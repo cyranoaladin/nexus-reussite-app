@@ -38,11 +38,11 @@ export function CTASection() {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-              Prêt à Transformer la Réussite de Votre Enfant ?
+              Prêt à Conquérir le <span className="text-blue-100">Bac</span> et Vos <span className="text-blue-100">Objectifs</span> ?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Commencez par un bilan stratégique gratuit et découvrez comment 
-              notre approche unique peut faire la différence.
+              notre approche unique peut garantir votre <span className="text-blue-100 font-semibold">réussite au Baccalauréat</span> et votre <span className="text-blue-100 font-semibold">excellence à Parcoursup</span>.
             </p>
           </motion.div>
 

@@ -70,11 +70,11 @@ export function HowItWorksSection() {
             Comment ça marche ?
           </Badge>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Votre Parcours vers <span className="text-blue-600">l'Excellence</span>
+            Construisez Votre <span className="text-blue-600">Réussite</span> : Du <span className="text-blue-600">Bac</span> à <span className="text-blue-600">Parcoursup</span>
           </h2>
           <p className="text-xl text-slate-900 max-w-3xl mx-auto">
             Un processus simple et transparent, conçu pour vous accompagner 
-            de la découverte jusqu'à la réussite de vos objectifs.
+            de la découverte jusqu'à la <span className="text-blue-600">réussite au Baccalauréat</span> et l'<span className="text-blue-600">excellence à Parcoursup</span>.
           </p>
         </motion.div>
 

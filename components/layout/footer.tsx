@@ -17,10 +17,13 @@ export function Footer() {
                 height={40}
                 className="h-10 w-auto"
               />
-              <span className="font-bold text-xl">Nexus Réussite</span>
+              <div className="font-bold text-xl">
+                <span className="text-blue-300">Nexus</span>
+                <span className="text-red-400"> Réussite</span>
+              </div>
             </Link>
             <p className="text-blue-300 mb-6 max-w-md">
-              La plateforme de pédagogie augmentée de référence pour les lycéens du système français en Tunisie.
+              La plateforme de <span className="text-blue-300 font-semibold">pédagogie augmentée</span> de référence pour la <span className="text-blue-300 font-semibold">réussite au Baccalauréat</span> et l'<span className="text-blue-300 font-semibold">excellence à Parcoursup</span>.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-blue-300 hover:text-white transition-colors">
@@ -43,7 +46,6 @@ export function Footer() {
               <li><Link href="/offres" className="text-blue-300 hover:text-white transition-colors">Offres & Tarifs</Link></li>
               <li><Link href="/notre-centre" className="text-blue-300 hover:text-white transition-colors">Notre Centre</Link></li>
               <li><Link href="/contact" className="text-blue-300 hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/blog" className="text-blue-300 hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 
