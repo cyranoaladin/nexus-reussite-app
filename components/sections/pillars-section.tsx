@@ -31,7 +31,7 @@ const pillars = [
 
 export function PillarsSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête de section */}
         <motion.div
@@ -46,7 +46,7 @@ export function PillarsSection() {
             Les 3 Piliers de Notre Révolution
           </Badge>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Une Approche Unique en Son Genre
+            Une <span className="text-primary-600">Approche Unique</span> en Son Genre
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Nous combinons le meilleur de l'humain et de la technologie pour créer 
@@ -67,6 +67,7 @@ export function PillarsSection() {
                 viewport={{ once: true }}
               >
                 <Card className="h-full hover:shadow-medium transition-all duration-300 border-0 shadow-soft">
+                <Card className="h-full hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg bg-white">
                   <CardContent className="p-8 text-center">
                     {/* Icône */}
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${

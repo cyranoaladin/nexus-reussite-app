@@ -13,6 +13,7 @@ import Link from "next/link"
 const SUBSCRIPTION_PLANS = {
   ACCES_PLATEFORME: {
     name: "ACCÈS PLATEFORME",
+    description: "L'essentiel pour commencer votre parcours d'excellence",
     price: 150,
     credits: 0,
     features: [
@@ -24,6 +25,7 @@ const SUBSCRIPTION_PLANS = {
   },
   HYBRIDE: {
     name: "HYBRIDE",
+    description: "L'équilibre parfait entre autonomie et suivi humain personnalisé",
     price: 450,
     credits: 4,
     popular: true,
@@ -36,6 +38,7 @@ const SUBSCRIPTION_PLANS = {
   },
   IMMERSION: {
     name: "IMMERSION",
+    description: "L'accompagnement premium pour une réussite exceptionnelle",
     price: 750,
     credits: 8,
     features: [
@@ -202,6 +205,7 @@ export function BusinessModelSection() {
                     <CardTitle className="font-heading text-xl font-bold text-gray-900">
                       {plan.name}
                     </CardTitle>
+                    <p className="text-sm text-gray-600 mt-2">{plan.description}</p>
                     <div className="mt-4">
                       <span className="text-4xl font-bold text-gray-900">
                         {formatPrice(plan.price, "TND")}
@@ -243,6 +247,33 @@ export function BusinessModelSection() {
           </div>
         </motion.div>
 
+        {/* Règles du Système de Crédits - Remontée */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          viewport={{ once: true }}
+          className="bg-blue-50 rounded-xl p-6 text-center mb-16"
+        >
+          <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
+            💡 Règles du Système de Crédits
+          </h3>
+          <div className="text-gray-600 text-sm space-y-2">
+            <p>
+              <strong>Coûts des Prestations :</strong> Cours en ligne (1 crédit) • 
+              Cours en présentiel (1,25 crédit) • Atelier de groupe (1,5 crédit)
+            </p>
+            <p>
+              <strong>Report :</strong> Les crédits non utilisés sont reportés 1 mois. 
+              Notification 7 jours avant expiration.
+            </p>
+            <p>
+              <strong>Packs supplémentaires :</strong> Validité 12 mois. 
+              Annulation gratuite > 24h (cours) ou 48h (ateliers).
+            </p>
+          </div>
+        </motion.div>
+
         {/* Add-ons ARIA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -281,8 +312,10 @@ export function BusinessModelSection() {
                         <span className="text-gray-500 text-sm block">/mois</span>
                       </div>
                     </div>
-                    <Button className="w-full" variant="outline">
-                      Ajouter à mon Abonnement
+                    <Button className="w-full" variant="outline" asChild>
+                      <Link href="/bilan-gratuit">
+                        Ajouter à mon Abonnement
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -331,41 +364,16 @@ export function BusinessModelSection() {
                           </li>
                         ))}
                       </ul>
-                      <Button className="w-full">
-                        Réserver ce Pack
+                      <Button className="w-full" asChild>
+                        <Link href="/bilan-gratuit">
+                          Réserver ce Pack
+                        </Link>
                       </Button>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
-        </motion.div>
-
-        {/* Note explicative sur les crédits */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          viewport={{ once: true }}
-          className="bg-blue-50 rounded-xl p-6 text-center"
-        >
-          <h3 className="font-heading font-semibold text-lg text-gray-900 mb-2">
-            💡 Règles du Système de Crédits
-          </h3>
-          <div className="text-gray-600 text-sm space-y-2">
-            <p>
-              <strong>Coûts des Prestations :</strong> Cours en ligne (1 crédit) • 
-              Cours en présentiel (1,25 crédit) • Atelier de groupe (1,5 crédit)
-            </p>
-            <p>
-              <strong>Report :</strong> Les crédits non utilisés sont reportés 1 mois. 
-              Notification 7 jours avant expiration.
-            </p>
-            <p>
-              <strong>Packs supplémentaires :</strong> Validité 12 mois. 
-              Annulation gratuite > 24h (cours) ou 48h (ateliers).
-            </p>
           </div>
         </motion.div>
       </div>

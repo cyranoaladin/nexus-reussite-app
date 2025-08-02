@@ -48,6 +48,11 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
+            <Button asChild variant="outline">
+              <Link href="/auth/signin">
+                Se Connecter
+              </Link>
+            </Button>
             <Button asChild>
               <Link href="/bilan-gratuit">
                 Bilan Gratuit
@@ -83,6 +88,11 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-3 py-2">
+                <Button asChild variant="outline" className="w-full mb-2">
+                  <Link href="/auth/signin">
+                    Se Connecter
+                  </Link>
+                </Button>
                 <Button asChild className="w-full">
                   <Link href="/bilan-gratuit">
                     Bilan Gratuit

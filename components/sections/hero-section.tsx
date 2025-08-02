@@ -45,7 +45,9 @@ export function HeroSection() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
             >
-              La Pédagogie Augmentée
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
+                La Pédagogie Augmentée
+              </span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
                 de Référence
               </span>
@@ -59,7 +61,7 @@ export function HeroSection() {
               className="flex justify-center lg:justify-start mb-6"
             >
               <Image
-                src="/images/logo_slogan.svg"
+                src="/images/logo_slogan_nexus.png"
                 alt="Nexus Réussite - Pédagogie Augmentée"
                 width={300}
                 height={80}
@@ -74,8 +76,8 @@ export function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              La première plateforme qui fusionne un accompagnement humain d'élite, 
-              une technologie intelligente et l'assistance IA révolutionnaire ARIA 
+              La première plateforme qui fusionne un <span className="text-primary-600 font-semibold">accompagnement humain d'élite</span>, 
+              une <span className="text-primary-600 font-semibold">plateforme intelligente</span> et l'assistance <span className="text-primary-600 font-semibold">IA révolutionnaire ARIA</span> 
               pour garantir la réussite de votre enfant.
             </motion.p>
 

@@ -7,6 +7,7 @@ import { PillarsSection } from "@/components/sections/pillars-section"
 import { BusinessModelSection } from "@/components/sections/business-model-section"
 import { HowItWorksSection } from "@/components/sections/how-it-works-section"
 import { CTASection } from "@/components/sections/cta-section"
+import { AriaChat } from "@/components/ui/aria-chat"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
         <CTASection />
       </main>
       <Footer />
+      <AriaChat />
     </div>
   )
 }

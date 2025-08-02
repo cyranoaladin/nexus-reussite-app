@@ -69,7 +69,7 @@ export function HowItWorksSection() {
             Comment ça marche ?
           </Badge>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Votre Parcours vers l'Excellence
+            Votre Parcours vers <span className="text-primary-600">l'Excellence</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Un processus simple et transparent, conçu pour vous accompagner 
@@ -90,6 +90,7 @@ export function HowItWorksSection() {
                 viewport={{ once: true }}
               >
                 <Card className="h-full hover:shadow-medium transition-all duration-300 border-0 shadow-soft">
+                <Card className="h-full hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg bg-white">
                   <CardContent className="p-6">
                     {/* Numéro et icône */}
                     <div className="flex items-center mb-4">
