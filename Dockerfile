@@ -53,13 +53,6 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# On installe UNIQUEMENT les dépendances de production pour alléger l'image finale.
-# On copie d'abord le package.json...
-COPY --from=builder /app/package.json ./package.json
-# ...puis on lance l'installation en mode production.
-RUN npm ci --omit=dev
-RUN npx prisma generate
-
 # On copie les artefacts de build depuis l'étape "builder"
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
