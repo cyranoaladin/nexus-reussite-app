@@ -7,6 +7,7 @@ import { Star, Users, Clock, Target, ArrowRight, Check } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
  import { SUBSCRIPTION_PLANS, SPECIAL_PACKS, ARIA_ADDONS } from "@/lib/constants"
 import { motion } from "framer-motion"
+import { Trophy } from "lucide-react"
 
 const formatPrice = (price: number) => `${price}€`
 
@@ -39,7 +40,7 @@ export default function OffresPage() {
               Un accompagnement régulier adapté à vos besoins
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-4 gap-8">
               {Object.entries(SUBSCRIPTION_PLANS).map(([key, plan]) => (
                 <Card key={key} className={`relative ${plan.popular ? 'border-primary-500 shadow-lg' : 'border-gray-200'}`}>
                   {plan.popular && (
@@ -71,6 +72,54 @@ export default function OffresPage() {
                   </CardContent>
                 </Card>
               ))}
+              
+              {/* Pack Candidat Libre */}
+              <Card className="relative border-2 border-slate-900 shadow-2xl">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-red-500 text-white px-4 py-1">
+                    <Trophy className="w-3 h-3 mr-1" />
+                    Pack Annuel
+                  </Badge>
+                </div>
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-xl font-bold">Pack Candidat Libre</CardTitle>
+                  <div className="mt-4">
+                    <span className="text-3xl font-bold text-blue-600">
+                      7200 TND
+                    </span>
+                    <div className="text-sm text-gray-600 mt-1">
+                      Payable en 3 fois sans frais
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    <li className="flex items-start space-x-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-600 text-xs">Accès Illimité Plateforme + ARIA+</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-600 text-xs">90 Crédits annuels</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-600 text-xs">Coach Principal dédié</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-600 text-xs">Pack Grand Oral inclus</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-600 text-xs">Pack Parcoursup inclus</span>
+                    </li>
+                  </ul>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    Demander un entretien
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </motion.div>
 

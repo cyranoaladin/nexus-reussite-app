@@ -7,6 +7,8 @@ import { HeroSection } from "@/components/sections/hero-section"
 import { PillarsSection } from "@/components/sections/pillars-section"
 import { BusinessModelSection } from "@/components/sections/business-model-section"
 import { HowItWorksSection } from "@/components/sections/how-it-works-section"
+import { StagesIntensifsSection } from "@/components/sections/stages-intensifs-section"
+import { CandidatLibreSection } from "@/components/sections/candidat-libre-section"
 import { CTASection } from "@/components/sections/cta-section"
 import { AriaChat } from "@/components/ui/aria-chat"
 
@@ -19,6 +21,8 @@ export default function HomePage() {
         <PillarsSection />
         <HowItWorksSection />
         <BusinessModelSection />
+        <StagesIntensifsSection />
+        <CandidatLibreSection />
         <CTASection />
       </main>
       <Footer />
