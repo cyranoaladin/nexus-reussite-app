@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { Suspense } from 'react';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,12 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${inter.variable} ${poppins.variable} antialiased`}
-      >
-        <Suspense fallback={<div>Chargement...</div>}>
-          {children}
-        </Suspense>
+      <body className={`${inter.variable} ${poppins.variable} antialiased bg-white text-bleu-nuit`}>
+        {children}
       </body>
     </html>
   );
