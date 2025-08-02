@@ -1,36 +1,70 @@
 "use client"
 
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MessageCircle, X, Send, Bot, User } from "lucide-react"
+import { MessageCircle, X, Send, Bot, User, ThumbsUp, ThumbsDown, BookOpen } from "lucide-react"
 import Image from "next/image"
+import { Subject } from "@/types/enums"
+import Link from "next/link"
 
 interface Message {
   id: string
   role: 'user' | 'assistant'
   content: string
   timestamp: Date
+  feedback?: boolean | null
 }
 
+const SUBJECTS_OPTIONS = [
+  { value: Subject.MATHEMATIQUES, label: "Mathématiques" },
+  { value: Subject.NSI, label: "NSI" },
+  { value: Subject.FRANCAIS, label: "Français" },
+  { value: Subject.PHILOSOPHIE, label: "Philosophie" },
+  { value: Subject.HISTOIRE_GEO, label: "Histoire-Géographie" },
+  { value: Subject.ANGLAIS, label: "Anglais" },
+  { value: Subject.ESPAGNOL, label: "Espagnol" },
+  { value: Subject.PHYSIQUE_CHIMIE, label: "Physique-Chimie" },
+  { value: Subject.SVT, label: "SVT" },
+  { value: Subject.SES, label: "SES" }
+]
+
 export function AriaChat() {
+  const { data: session } = useSession()
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
-  const [demoQuestionsUsed, setDemoQuestionsUsed] = useState(0)
+  const [selectedSubject, setSelectedSubject] = useState<Subject>(Subject.MATHEMATIQUES)
+  const [conversationId, setConversationId] = useState<string>("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [hasAriaAccess, setHasAriaAccess] = useState(false)
 
-  const demoResponses = [
-    "Bonjour ! Je suis ARIA, votre assistant IA pédagogique spécialisé dans la réussite au Baccalauréat et l'excellence à Parcoursup. Je peux vous aider avec les mathématiques, la NSI, le français, la philosophie et toutes les matières du programme. Posez-moi votre première question !",
-    "Excellente question ! Pour bien maîtriser ce concept essentiel au Bac, commençons par les fondamentaux... Pour une explication complète avec des exercices personnalisés et un suivi de vos progrès, créez votre compte Nexus Réussite.",
-    "Vous avez atteint la limite de cette démonstration gratuite ! Pour continuer à bénéficier de mon aide 24/7 et accéder à tous mes contenus pédagogiques exclusifs, inscrivez-vous maintenant et commencez votre parcours vers l'excellence."
-  ]
+  useEffect(() => {
+    if (session?.user.role === 'ELEVE') {
+      setIsAuthenticated(true)
+      // TODO: Vérifier les droits ARIA de l'élève
+      setHasAriaAccess(true)
+    } else {
+      setIsAuthenticated(false)
+      setHasAriaAccess(false)
+    }
+  }, [session])
 
   const handleSendMessage = async () => {
     if (!input.trim()) return
+
+    if (!isAuthenticated) {
+      // Mode démo pour utilisateurs non connectés
+      handleDemoMessage()
+      return
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -43,19 +77,108 @@ export function AriaChat() {
     setInput("")
     setIsLoading(true)
 
-    // Simulation de réponse pour la démo
+    try {
+      const response = await fetch('/api/aria/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          conversationId: conversationId || undefined,
+          subject: selectedSubject,
+          content: input
+        })
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        const ariaMessage: Message = {
+          id: result.message.id,
+          role: 'assistant',
+          content: result.message.content,
+          timestamp: new Date(result.message.createdAt)
+        }
+
+        setMessages(prev => [...prev, ariaMessage])
+        
+        if (!conversationId) {
+          setConversationId(result.conversation.id)
+        }
+
+        // Afficher les nouveaux badges si il y en a
+        if (result.newBadges && result.newBadges.length > 0) {
+          // TODO: Afficher notification de nouveaux badges
+          console.log('Nouveaux badges:', result.newBadges)
+        }
+      } else {
+        throw new Error(result.error || 'Erreur lors de la communication avec ARIA')
+      }
+    } catch (error) {
+      console.error('Erreur ARIA:', error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Désolé, je rencontre une difficulté technique. Veuillez réessayer ou contacter un coach.",
+        timestamp: new Date()
+      }
+      setMessages(prev => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleDemoMessage = () => {
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input,
+      timestamp: new Date()
+    }
+
+    setMessages(prev => [...prev, userMessage])
+    setInput("")
+    setIsLoading(true)
+
     setTimeout(() => {
+      const demoResponse = messages.length === 0 
+        ? "Bonjour ! Je suis ARIA, votre assistant IA pédagogique. Pour accéder à toutes mes fonctionnalités et bénéficier d'un suivi personnalisé, connectez-vous à votre compte Nexus Réussite."
+        : "Pour continuer notre conversation et accéder à mes contenus pédagogiques exclusifs, veuillez vous connecter à votre compte."
+
       const ariaMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: demoResponses[Math.min(demoQuestionsUsed, demoResponses.length - 1)],
+        content: demoResponse,
         timestamp: new Date()
       }
 
       setMessages(prev => [...prev, ariaMessage])
-      setDemoQuestionsUsed(prev => prev + 1)
       setIsLoading(false)
     }, 1500)
+  }
+
+  const handleFeedback = async (messageId: string, feedback: boolean) => {
+    if (!isAuthenticated) return
+
+    try {
+      await fetch('/api/aria/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          messageId,
+          feedback
+        })
+      })
+
+      // Mettre à jour le message avec le feedback
+      setMessages(prev => prev.map(msg => 
+        msg.id === messageId ? { ...msg, feedback } : msg
+      ))
+    } catch (error) {
+      console.error('Erreur feedback:', error)
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -145,7 +268,7 @@ export function AriaChat() {
               <CardContent className="flex flex-col h-full p-0">
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-6 space-y-4">
-                  {messages.length === 0 && (
+                  {messages.length === 0 && !isAuthenticated && (
                     <div className="text-center text-bleu-nuit py-12">
                       <Image
                         src="/images/aria.png"
@@ -160,8 +283,27 @@ export function AriaChat() {
                       <p className="text-sm text-bleu-nuit/80 leading-relaxed">
                         Posez-moi une question pour commencer !<br />
                         <span className="text-xs text-blue-600 font-medium">
-                          Démonstration gratuite (3 questions)
+                          Démonstration gratuite - Connectez-vous pour plus
                         </span>
+                      </p>
+                    </div>
+                  )}
+
+                  {messages.length === 0 && isAuthenticated && (
+                    <div className="text-center text-bleu-nuit py-12">
+                      <Image
+                        src="/images/aria.png"
+                        alt="ARIA"
+                        width={80}
+                        height={80}
+                        className="mx-auto mb-4 rounded-full"
+                      />
+                      <h3 className="font-heading font-semibold text-lg text-bleu-nuit mb-2">
+                        Bonjour {session?.user.firstName} ! 👋
+                      </h3>
+                      <p className="text-sm text-bleu-nuit/80 leading-relaxed">
+                        Je suis ARIA, votre assistant IA personnel.<br />
+                        Choisissez une matière et posez-moi votre question !
                       </p>
                     </div>
                   )}
@@ -184,6 +326,29 @@ export function AriaChat() {
                           )}
                           <p className="text-sm leading-relaxed">{message.content}</p>
                         </div>
+                        
+                        {/* Feedback pour les réponses ARIA */}
+                        {message.role === 'assistant' && isAuthenticated && (
+                          <div className="flex items-center space-x-2 mt-3">
+                            <span className="text-xs text-gray-500">Cette réponse vous a-t-elle aidé ?</span>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleFeedback(message.id, true)}
+                              className={`h-6 w-6 p-0 ${message.feedback === true ? 'text-green-600' : 'text-gray-400'}`}
+                            >
+                              <ThumbsUp className="w-3 h-3" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleFeedback(message.id, false)}
+                              className={`h-6 w-6 p-0 ${message.feedback === false ? 'text-red-600' : 'text-gray-400'}`}
+                            >
+                              <ThumbsDown className="w-3 h-3" />
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -203,29 +368,50 @@ export function AriaChat() {
                     </div>
                   )}
 
-                  {demoQuestionsUsed >= 3 && (
+                  {!isAuthenticated && messages.length >= 2 && (
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
                       <p className="text-sm text-blue-800 mb-4 font-medium">
-                        Démonstration terminée ! 🎉
+                        Connectez-vous pour continuer ! 🎉
                       </p>
                       <Button asChild size="default" className="w-full bg-blue-600 hover:bg-blue-700">
-                        <a href="/bilan-gratuit">
-                          Créer mon Compte Gratuit
-                        </a>
+                        <Link href="/auth/signin">
+                          Se Connecter
+                        </Link>
                       </Button>
                     </div>
                   )}
                 </div>
 
                 {/* Input */}
-                {demoQuestionsUsed < 3 && (
+                {(isAuthenticated || messages.length < 2) && (
                   <div className="border-t border-slate-200 p-6 bg-white">
+                    {/* Sélecteur de matière pour utilisateurs connectés */}
+                    {isAuthenticated && (
+                      <div className="mb-4">
+                        <Label className="text-sm font-medium text-gray-700 mb-2 block">
+                          Matière :
+                        </Label>
+                        <Select value={selectedSubject} onValueChange={(value) => setSelectedSubject(value as Subject)}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {SUBJECTS_OPTIONS.map((subject) => (
+                              <SelectItem key={subject.value} value={subject.value}>
+                                {subject.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    )}
+                    
                     <div className="flex space-x-3">
                       <Input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyPress={handleKeyPress}
-                        placeholder="Posez votre question sur le Bac, Parcoursup..."
+                        placeholder={isAuthenticated ? `Posez votre question en ${SUBJECTS_OPTIONS.find(s => s.value === selectedSubject)?.label}...` : "Posez votre question..."}
                         disabled={isLoading}
                         className="flex-1 h-12 text-sm"
                       />
@@ -238,9 +424,11 @@ export function AriaChat() {
                         <Send className="w-5 h-5" />
                       </Button>
                     </div>
-                    <p className="text-xs text-bleu-nuit/60 mt-3 text-center font-medium">
-                      Questions restantes : {3 - demoQuestionsUsed}
-                    </p>
+                    {!isAuthenticated && (
+                      <p className="text-xs text-bleu-nuit/60 mt-3 text-center font-medium">
+                        Mode démonstration - Connectez-vous pour l'expérience complète
+                      </p>
+                    )}
                   </div>
                 )}
               </CardContent>

@@ -220,17 +220,72 @@ export default function DashboardCoach() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-12">
-                <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  Liste des élèves
-                </h3>
-                <p className="text-gray-500 mb-4">
-                  La gestion détaillée des élèves sera disponible prochainement.
-                </p>
-                <Badge variant="outline">
-                  Fonctionnalité en développement
-                </Badge>
+              <div className="space-y-4">
+                {/* Élève 1 */}
+                <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-1">
+                      <h4 className="font-medium text-gray-900">Emma M.</h4>
+                      <Badge variant="outline" className="text-xs">
+                        Terminale
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-gray-600">Mathématiques • Dernière session: 12/01</p>
+                    <div className="flex items-center space-x-4 mt-2">
+                      <span className="text-xs text-green-600 font-medium">Progression: 85%</span>
+                      <span className="text-xs text-gray-500">4.5 crédits restants</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm">
+                      Voir Profil
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Élève 2 */}
+                <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-1">
+                      <h4 className="font-medium text-gray-900">Lucas D.</h4>
+                      <Badge variant="outline" className="text-xs">
+                        Première
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-gray-600">Maths Expertes • Dernière session: 10/01</p>
+                    <div className="flex items-center space-x-4 mt-2">
+                      <span className="text-xs text-blue-600 font-medium">Progression: 72%</span>
+                      <span className="text-xs text-gray-500">2 crédits restants</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm">
+                      Voir Profil
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Élève 3 */}
+                <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-1">
+                      <h4 className="font-medium text-gray-900">Sarah K.</h4>
+                      <Badge variant="outline" className="text-xs">
+                        Seconde
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-gray-600">Mathématiques • Première session prévue</p>
+                    <div className="flex items-center space-x-4 mt-2">
+                      <span className="text-xs text-purple-600 font-medium">Nouveau élève</span>
+                      <span className="text-xs text-gray-500">8 crédits disponibles</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm">
+                      Planifier 1ère Session
+                    </Button>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>

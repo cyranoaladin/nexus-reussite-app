@@ -194,7 +194,85 @@ export default function DashboardEleve() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2" asChild>
+                <Link href="/dashboard/eleve/sessions">
+                  <Calendar className="w-6 h-6 text-blue-600" />
+                  <span>Réserver une Session</span>
+                </Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="h-auto p-4 flex flex-col items-center space-y-2"
+                onClick={() => {
+                  // Ouvrir le chat ARIA (déjà présent sur la page)
+                  const ariaButton = document.querySelector('[data-aria-chat-trigger]') as HTMLButtonElement
+                  if (ariaButton) ariaButton.click()
+                }}
+              >
+                <MessageCircle className="w-6 h-6 text-purple-600" />
+                <span>Parler à ARIA</span>
+              </Button>
+              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2" asChild>
+                <Link href="/dashboard/eleve/ressources">
+                  <BookOpen className="w-6 h-6 text-green-600" />
+                  <span>Mes Ressources</span>
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Section Gamification */}
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <span className="text-2xl mr-2">🏆</span>
+              Mes Badges de Progression
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {/* Badge exemple */}
+              <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="text-2xl mb-2">👋</div>
+                <h4 className="font-semibold text-sm text-gray-900">Premiers Pas</h4>
+                <p className="text-xs text-gray-600">Première connexion</p>
+              </div>
+              
+              {/* Badges à débloquer */}
+              <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200 opacity-50">
+                <div className="text-2xl mb-2">🔥</div>
+                <h4 className="font-semibold text-sm text-gray-500">Chauffage...</h4>
+                <p className="text-xs text-gray-500">À débloquer</p>
+              </div>
+              
+              <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200 opacity-50">
+                <div className="text-2xl mb-2">🚀</div>
+                <h4 className="font-semibold text-sm text-gray-500">Décollage</h4>
+                <p className="text-xs text-gray-500">À débloquer</p>
+              </div>
+              
+              <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200 opacity-50">
+                <div className="text-2xl mb-2">🤖</div>
+                <h4 className="font-semibold text-sm text-gray-500">Dialogue IA</h4>
+                <p className="text-xs text-gray-500">À débloquer</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </main>
+
+      {/* Attribut pour le bouton ARIA */}
+      <div 
+        data-aria-chat-trigger 
+        className="fixed bottom-6 right-6 z-50"
+        style={{ pointerEvents: 'none' }}
+      >
+        {/* Le composant AriaChat sera rendu ici */}
+      </div>
+    </div>
+  )
+}
                 <Calendar className="w-6 h-6 text-blue-600" />
                 <span>Réserver une Session</span>
               </Button>
