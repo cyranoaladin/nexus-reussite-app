@@ -53,7 +53,6 @@ export default function OffresPage() {
                       </span>
                       <span className="text-gray-600">/mois</span>
                     </div>
-                    <p className="text-gray-600 mt-2">{plan.description}</p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <ul className="space-y-3">
