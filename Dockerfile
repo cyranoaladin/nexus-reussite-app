@@ -58,6 +58,7 @@ ENV NODE_ENV=production
 COPY --from=builder /app/package.json ./package.json
 # ...puis on lance l'installation en mode production.
 RUN npm ci --omit=dev
+RUN npx prisma generate
 
 # On copie les artefacts de build depuis l'étape "builder"
 COPY --from=builder /app/public ./public
