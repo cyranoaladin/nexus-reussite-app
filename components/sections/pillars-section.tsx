@@ -66,7 +66,6 @@ export function PillarsSection() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-medium transition-all duration-300 border-0 shadow-soft">
                 <Card className="h-full hover:shadow-xl hover:scale-105 transition-all duration-300 border-0 shadow-lg bg-white">
                   <CardContent className="p-8 text-center">
                     {/* Icône */}
