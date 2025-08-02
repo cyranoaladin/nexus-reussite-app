@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bienvenue sur le Projet Nexus Réussite !
 
-## Getting Started
+**À :** Équipe de Développement `bolt.new`
+**De :** CTO, Nexus Réussite
+**Objet :** Guide Complet pour le Développement de la Plateforme Nexus Réussite
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 1. Notre Vision : Au-delà du Site Web, une Expérience
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Bonjour l'équipe, et bienvenue dans ce projet passionnant.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Notre objectif est de construire la **plateforme de référence pour l'excellence éducative en Tunisie**. Nous ne visons pas un simple site web, mais une expérience utilisateur si fluide, professionnelle et rassurante qu'elle devient un argument de vente à elle seule. Chaque interaction, chaque animation, chaque pixel doit refléter la qualité premium et l'innovation de notre approche pour créer un **effet "WOW"**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **Directive Impérative : Zéro Coquille Vide**
 
-## Learn More
+Ce projet est une commande pour une **application web de production, 100% fonctionnelle**. Chaque fonctionnalité, chaque logique métier et chaque interaction décrite dans notre documentation doit être **réellement codée, implémentée et opérationnelle**. Le livrable final doit être une plateforme prête à accueillir et à servir de vrais clients.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 2. Votre Source Unique de Vérité : Le Dossier `/feuille_route`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+L'intégralité de la vision du projet, de la stratégie business à la charte de design, a été méticuleusement documentée. Avant d'écrire la moindre ligne de code, veuillez prendre connaissance de l'ensemble des documents présents dans le dossier `/feuille_route` à la racine de ce projet.
 
-## Deploy on Vercel
+**Considérez ce dossier comme la "Constitution" du projet.** Chaque décision de développement doit être alignée avec les spécifications qu'il contient.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*   **`Cahier des Charges Global & Technique.md`** : La vision d'ensemble et la stack technique.
+*   **`Logique Metier_Business Model.md`** : Les règles complexes des abonnements, crédits et paiements. **Lecture capitale.**
+*   **`Systeme_de_Design_Exp_Utilisa.md`** : Le look & feel, les animations et la charte graphique.
+*   **`Specifications-Fonctionnelles-par-Role.md`** : Le détail des dashboards et des permissions.
+*   **`Profils_Equipe_Gamification.md`** : Le contenu brut pour la page Équipe et la logique de gamification.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 3. Démarrage Rapide de l'Environnement de Développement Local
+
+Ce projet est configuré pour un développement local robuste et cohérent via **Docker** et **Docker Compose**.
+
+### Pré-requis
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installé et en cours d'exécution sur votre machine.
+- Avoir `npm` comme gestionnaire de paquets par défaut.
+
+### Étapes de Lancement
+1.  **Créez vos Variables d'Environnement Locales :**
+    *   Créez une copie du fichier `.env.local.example` (s'il existe) ou créez un nouveau fichier nommé `.env.local` à la racine du projet.
+    *   Remplissez ce fichier avec vos clés d'API de **TEST**, vos mots de passe de base de données locale, etc. Ce fichier est ignoré par Git et ne doit jamais être partagé.
+
+2.  **Lancez les Conteneurs Docker :**
+    *   Ouvrez un terminal à la racine du projet et exécutez la commande suivante :
+    ```bash
+    docker compose up --build -d
+    ```
+    *   Cette commande va construire l'image de l'application Next.js et démarrer un conteneur de base de données PostgreSQL en arrière-plan.
+
+3.  **Appliquez les Migrations de la Base de Données :**
+    *   Une fois les conteneurs lancés, exécutez cette commande pour créer les tables dans votre base de données locale en fonction du schéma Prisma :
+    ```bash
+    npx prisma migrate dev
+    ```
+
+4.  **Accédez à l'Application :**
+    *   Ouvrez votre navigateur et allez sur [**http://localhost:3000**](http://localhost:3000). Vous devriez voir la page d'accueil de l'application. La page se mettra à jour automatiquement à chaque modification du code.
+
+---
+
+## 4. Lignes Directrices Techniques & Attentes
+
+*   **Stack Technique :** Le projet est solidement ancré sur **Next.js 14 (App Router), TypeScript, et Tailwind CSS**. Merci de respecter cette stack.
+*   **Qualité du Code :** Nous attendons un code propre, bien structuré, commenté si nécessaire, et suivant les meilleures pratiques de l'écosystème React/Next.js. La maintenabilité est une priorité.
+*   **Animations & Micro-interactions :** L'utilisation de **Framer Motion** est fortement encouragée pour créer les effets décrits dans la charte de design.
+*   **Ressources Graphiques :** Les assets (logos, mascotte) sont disponibles dans `/public/images/`. Veuillez les intégrer de manière optimisée via le composant `<Image>` de Next.js.
+
+---
+
+Nous sommes convaincus que vous avez le talent et l'expertise pour transformer cette vision en une réalité exceptionnelle. Nous restons à votre disposition pour toute clarification, mais les documents du dossier `/feuille_route` doivent rester votre référence principale.
+
+Construisons ensemble une plateforme dont nous serons fiers.
+
+**Le CTO de Nexus Réussite**
