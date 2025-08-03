@@ -70,6 +70,28 @@ export async function refundCredits(studentId: string, amount: number, sessionId
   })
 }
 
+// Vérification de la possibilité d'annulation selon les règles métier
+export function canCancelBooking(scheduledAt: Date, currentTime: Date = new Date(), sessionType: ServiceType): boolean {
+  const timeDifferenceMs = scheduledAt.getTime() - currentTime.getTime()
+  const hoursDifference = timeDifferenceMs / (1000 * 60 * 60)
+
+  // Règles métier d'annulation :
+  switch (sessionType) {
+    case 'COURS_ONLINE':
+    case 'COURS_PRESENTIEL':
+      // Cours individuels : annulation possible jusqu'à 24h avant
+      return hoursDifference >= 24
+    
+    case 'ATELIER_GROUPE':
+      // Ateliers de groupe : annulation possible jusqu'à 48h avant
+      return hoursDifference >= 48
+    
+    default:
+      // Par défaut, appliquer la règle des cours individuels
+      return hoursDifference >= 24
+  }
+}
+
 // Attribution des crédits mensuels
 export async function allocateMonthlyCredits(studentId: string, credits: number) {
   const { prisma } = await import('./prisma')

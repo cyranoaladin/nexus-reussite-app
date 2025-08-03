@@ -1,4 +1,4 @@
-import { calculateCreditCost, checkCreditBalance, debitCredits, refundCredits } from '../../lib/credits';
+import { calculateCreditCost, checkCreditBalance, debitCredits, refundCredits, canCancelBooking } from '../../lib/credits';
 import { prisma } from '../../lib/prisma';
 import { ServiceType } from '../../types/enums';
 
@@ -139,19 +139,53 @@ describe('Credits System', () => {
 });
 
 describe('Booking Cancellation Logic', () => {
-  // Note: These tests would require implementation of canCancelBooking function
-  // which doesn't exist yet in the credits.ts file
   describe('canCancelBooking', () => {
-    it.skip('should return true if cancellation is 25 hours before a particular course', () => {
-      // This test would be implemented once canCancelBooking function is created
+    it('should return true if cancellation is 25 hours before a particular course', () => {
+      const scheduledAt = new Date('2024-12-15T14:00:00.000Z');
+      const currentTime = new Date('2024-12-14T13:00:00.000Z'); // 25 hours before
+      
+      const canCancel = canCancelBooking(scheduledAt, currentTime, 'COURS_PRESENTIEL' as ServiceType);
+      expect(canCancel).toBe(true);
     });
 
-    it.skip('should return false if cancellation is 23 hours before a particular course', () => {
-      // This test would be implemented once canCancelBooking function is created
+    it('should return false if cancellation is 23 hours before a particular course', () => {
+      const scheduledAt = new Date('2024-12-15T14:00:00.000Z');
+      const currentTime = new Date('2024-12-14T15:00:00.000Z'); // 23 hours before
+      
+      const canCancel = canCancelBooking(scheduledAt, currentTime, 'COURS_PRESENTIEL' as ServiceType);
+      expect(canCancel).toBe(false);
     });
 
-    it.skip('should return false if cancellation is 47 hours before a group workshop', () => {
-      // This test would be implemented once canCancelBooking function is created
+    it('should return false if cancellation is 47 hours before a group workshop', () => {
+      const scheduledAt = new Date('2024-12-15T14:00:00.000Z');
+      const currentTime = new Date('2024-12-13T15:00:00.000Z'); // 47 hours before
+      
+      const canCancel = canCancelBooking(scheduledAt, currentTime, 'ATELIER_GROUPE' as ServiceType);
+      expect(canCancel).toBe(false);
+    });
+
+    it('should return true if cancellation is 49 hours before a group workshop', () => {
+      const scheduledAt = new Date('2024-12-15T14:00:00.000Z');
+      const currentTime = new Date('2024-12-13T13:00:00.000Z'); // 49 hours before
+      
+      const canCancel = canCancelBooking(scheduledAt, currentTime, 'ATELIER_GROUPE' as ServiceType);
+      expect(canCancel).toBe(true);
+    });
+
+    it('should handle online courses with 24h rule', () => {
+      const scheduledAt = new Date('2024-12-15T14:00:00.000Z');
+      const currentTime = new Date('2024-12-14T13:30:00.000Z'); // 24.5 hours before
+      
+      const canCancel = canCancelBooking(scheduledAt, currentTime, 'COURS_ONLINE' as ServiceType);
+      expect(canCancel).toBe(true);
+    });
+
+    it('should default to 24h rule for unknown session types', () => {
+      const scheduledAt = new Date('2024-12-15T14:00:00.000Z');
+      const currentTime = new Date('2024-12-14T13:00:00.000Z'); // 25 hours before
+      
+      const canCancel = canCancelBooking(scheduledAt, currentTime, 'UNKNOWN_TYPE' as ServiceType);
+      expect(canCancel).toBe(true);
     });
   });
 });
